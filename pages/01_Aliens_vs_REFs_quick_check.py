@@ -90,9 +90,6 @@ with col2:
     
 #     percent_similarity = st.number_input('Required similarity (float from 0.01 - 0.99)', min_value=0.01, max_value=0.95, value=0.9, key=2)
 
-
-
-    
 filePath = refFiles[refGenome][0]
 
 df = getData(filePath)
@@ -145,7 +142,7 @@ st.markdown("""
             
 
 st.markdown(f'#### Reference genome: {refGenome}')
-st.write('Number of bins form aliens with scores less than 30')
+st.write('Number of bins with scores less than 30')
 
 
 chrm = ['1A', '2A', '3A', '4A', '5A', '6A', '7A',
@@ -176,9 +173,4 @@ for j in chrm:
             dfNew.loc[len(dfNew)] = my_list
             my_list = []
 
-#st.write(dfNew.query("Percent".max())["Variety"])
-st.write(dfNew['Percent'].max())
-  
-st.write(dfNew[dfNew['Percent'] == dfNew['Percent'].max]['Variety'])
-      
 st.write(dfNew)
