@@ -47,8 +47,8 @@ with col1:
                 sequences of high similarity; such regions are indicative of there being
                 introgression from the former into the latter.
     
-                If there are such sequences, then, on the next page, one can visualise these
-                regions and look for similar regions in Elite varieties of Watkins lines.
+                If there are such sequences, on the next page, one can visualise these
+                regions and, then, look for similar regions in Elite varieties and / or Watkins lines.
         
                 """
                 )
