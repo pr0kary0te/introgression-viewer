@@ -82,7 +82,7 @@ with col1:
         df = df_summaryT.loc[:, 'chr1D':'chr7D']
         dfMb = df.apply(lambda x: x*50,000) 
         title = "Chromosome Length: D Genome"             
-        image = "D_genome.png"
+        image = "D_Genome.png"
         box_colour = ["#D9A60A"]
         group = 'group D'
             
