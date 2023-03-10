@@ -175,4 +175,4 @@ st.markdown("""
                 
             )
     
-#st.write(st.session_state)
+st.write(st.session_state)
