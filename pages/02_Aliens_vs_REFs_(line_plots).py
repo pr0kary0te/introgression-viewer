@@ -36,7 +36,6 @@ def getData(filePath):
 def change_index(df):
     bin_list = list(range(1,(len(df) + 1)))
     df['Adjusted Bin'] = bin_list
-    # df.set_index('Adjusted Bin', inplace=True)
     
     return df
 
@@ -50,7 +49,7 @@ with st.sidebar:
     refGenome = st.selectbox(
         label='Select Reference Genome:',
         options=st.session_state.genome,
-        index=st.session_state.index,
+        index=st.session_state.indexGenome,
         key='ref')
 
 
@@ -83,7 +82,13 @@ with st.sidebar:
                        'timopheevii3708_nuq.jf': 'timopheevii3708_nuq_jf'},
                          inplace=True)
 
-    alienGenomeList = ['Ae. tauschii: ENT336',
+    alienGenomeList = ['Ae. tauschii: BW_01011',
+                       'Ae. tauschii: BW_01022',      
+                       'Ae. tauschii: BW_01024',      
+                       'Ae. tauschii: BW_01026',      
+                       'Ae. tauschii: BW_01014',
+                       'Ae. tauschii: BW_01028', 
+                       'Ae. tauschii: ENT336',
                        'Ae. speltoides: speltoides-10x_nuq',
                        'Ae. ventricosa: ventricosa-10x_nuq',
                        'Ae. ventricosa: ventricosa2067-10x_nuq',     
@@ -108,48 +113,56 @@ with st.sidebar:
                        'T. timopheevii: timopheevi33255-10x_nuq',
                        'T. turgidum ssp. dicoccoides: dicoccoides-10x_nuq',
                        'T. turgidum ssp. dicoccum: svevo-10x_nuq',
-                       'T. urartu: urartu-10x_nuq']
+                       'T. urartu: urartu-10x_nuq'
+                      ]
         
     alienGenome1 = st.selectbox(
         'Select first alien species ...',
         alienGenomeList,
-         23,
+         29,
          key='alien1'
         )
 
     alienGenome2 = st.selectbox(
         'Select second alien species ...',
         alienGenomeList,
-         17,
+         23,
          key='alien2'
         )         
          
-    alien = {'Ae. tauschii: ENT336': 'ENT336',
-         'Ae. speltoides: speltoides-10x_nuq': 'speltoides-10x_nuq',
-         'Ae. ventricosa: ventricosa-10x_nuq': 'ventricosa-10x_nuq',
-         'Ae. ventricosa: ventricosa2067-10x_nuq': 'ventricosa2067-10x_nuq',   
-         'Ae. ventricosa: ventricosa2181': 'ventricosa2181', 
-         'Ae. ventricosa: ventricosa2181-10x_nuq': 'ventricosa2181-10x_nuq',      
-         'Ae. ventricosa: ventricosa2210-10x_all': 'ventricosa2210-10x_all',      
-         'Ae. ventricosa: ventricosa2211-10x_nuq': 'ventricosa2211-10x_nuq',
-         'Ae. ventricosa: ventricosa2234-10x_all': 'ventricosa2234-10x_all',     
-         'Secale cereale: Lo7_nuq': 'Lo7_nuq',
-         'Th. elongatum: elongathum-10x_nuq': 'elongathum-10x_nuq',
-         'Th. ponticum: ponticumG37_nuq': 'ponticumG37_nuq',
-         'Th. ponticum: ponticumG38_nuq': 'ponticumG38_nuq',     
-         'Th. ponticum: ponticumG39-10x_nuq': 'ponticumG39-10x_nuq',
-         'T. timopheevii: timopheevi33255-10x_nuq': 'timopheevi33255-10x_nuq',
-         'T. timopheevii: timopheevii10558_nuq.jf': 'timopheevii10558_nuq_jf',
-         'T. timopheevii: timopheevi10827-10x_nuq':  'timopheevi10827-10x_nuq',    
-         'T. timopheevii: timopheevii10827-10x-all_all': 'timopheevii10827-10x-all_all',     
-         'T. timopheevii: timopheevii14352_nuq.jf': 'timopheevii14352_nuq_jf',     
-         'T. timopheevii: timopheevii15832_nuq.jf': 'timopheevii15832_nuq_jf',
-         'T. timopheevii: timopheevii17024-10x_all': 'timopheevii17024-10x_all',
-         'T. timopheevii: timopheevii22438_nuq.jf': 'timopheevii22438_nuq_jf',
-         'T. timopheevii: timopheevii3708_nuq.jf': 'timopheevii3708_nuq_jf',     
-         'T. turgidum ssp. dicoccoides: dicoccoides-10x_nuq': 'dicoccoides-10x_nuq',
-         'T. turgidum ssp. dicoccum: svevo-10x_nuq': 'svevo-10x_nuq',
-         'T. urartu: urartu-10x_nuq': 'urartu-10x_nuq'}
+    alien = {'Ae. tauschii: BW_01011': 'BW_01011',
+             'Ae. tauschii: BW_01022': 'BW_01022',      
+             'Ae. tauschii: BW_01024': 'BW_01024',      
+             'Ae. tauschii: BW_01026': 'BW_01026',      
+             'Ae. tauschii: BW_01014': 'BW_01014',
+             'Ae. tauschii: BW_01028': 'BW_01028',        
+             'Ae. tauschii: ENT336': 'ENT336',
+             'Ae. speltoides: speltoides-10x_nuq': 'speltoides-10x_nuq',
+             'Ae. ventricosa: ventricosa-10x_nuq': 'ventricosa-10x_nuq',
+             'Ae. ventricosa: ventricosa2067-10x_nuq': 'ventricosa2067-10x_nuq',   
+             'Ae. ventricosa: ventricosa2181': 'ventricosa2181', 
+             'Ae. ventricosa: ventricosa2181-10x_nuq': 'ventricosa2181-10x_nuq',      
+             'Ae. ventricosa: ventricosa2210-10x_all': 'ventricosa2210-10x_all',      
+             'Ae. ventricosa: ventricosa2211-10x_nuq': 'ventricosa2211-10x_nuq',
+             'Ae. ventricosa: ventricosa2234-10x_all': 'ventricosa2234-10x_all',     
+             'Secale cereale: Lo7_nuq': 'Lo7_nuq',
+             'Th. elongatum: elongathum-10x_nuq': 'elongathum-10x_nuq',
+             'Th. ponticum: ponticumG37_nuq': 'ponticumG37_nuq',
+             'Th. ponticum: ponticumG38_nuq': 'ponticumG38_nuq',     
+             'Th. ponticum: ponticumG39-10x_nuq': 'ponticumG39-10x_nuq',
+             'T. timopheevii: timopheevi33255-10x_nuq': 'timopheevi33255-10x_nuq',
+             'T. timopheevii: timopheevii10558_nuq.jf': 'timopheevii10558_nuq_jf',
+             'T. timopheevii: timopheevi10827-10x_nuq':  'timopheevi10827-10x_nuq',    
+             'T. timopheevii: timopheevii10827-10x-all_all': 'timopheevii10827-10x-all_all',     
+             'T. timopheevii: timopheevii14352_nuq.jf': 'timopheevii14352_nuq_jf',     
+             'T. timopheevii: timopheevii15832_nuq.jf': 'timopheevii15832_nuq_jf',
+             'T. timopheevii: timopheevii17024-10x_all': 'timopheevii17024-10x_all',
+             'T. timopheevii: timopheevii22438_nuq.jf': 'timopheevii22438_nuq_jf',
+             'T. timopheevii: timopheevii3708_nuq.jf': 'timopheevii3708_nuq_jf',     
+             'T. turgidum ssp. dicoccoides: dicoccoides-10x_nuq': 'dicoccoides-10x_nuq',
+             'T. turgidum ssp. dicoccum: svevo-10x_nuq': 'svevo-10x_nuq',
+             'T. urartu: urartu-10x_nuq': 'urartu-10x_nuq'
+             }
 
     chrm = st.selectbox(
         label='Select chromosome:',
