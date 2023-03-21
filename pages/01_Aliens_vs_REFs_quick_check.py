@@ -85,11 +85,6 @@ with col2:
     st.write('')    
     score_threshold = st.number_input('Score threshold (integer from 10 - 200):', min_value=10, max_value=200, value=30, key=1)
 
-
-# with col2:
-    
-#     percent_similarity = st.number_input('Required similarity (float from 0.01 - 0.99)', min_value=0.01, max_value=0.95, value=0.9, key=2)
-
 filePath = refFiles[refGenome][0]
 
 df = getData(filePath)
@@ -105,45 +100,48 @@ df.rename(columns={'timopheevii10558_nuq.jf': 'timopheevii10558_nuq_jf',
 # Define a dictionary in which the keys are the alien species and the values are
 # the names given to the samples in the dataframe; e.g., the alien species Aegilops tauschii
 # is named ENT336 in the underlying dataframe.      
-alien = {'Aegilops tauschii (D genome) - ENT336': 'ENT336',
-      'Aegilops speltoides (B or S genome) - speltoides-10x_nuq': 'speltoides-10x_nuq',
-      'Aegilops ventricosa (ND genomes - tetraploid) - ventricosa-10x_nuq': 'ventricosa-10x_nuq',
-      'Aegilops ventricosa (ND genomes - tetraploid) - ventricosa2067-10x_nuq': 'ventricosa2067-10x_nuq',   
-      'Aegilops ventricosa (ND genomes - tetraploid) - ventricosa2181': 'ventricosa2181', 
-      'Aegilops ventricosa (ND genomes - tetraploid) - ventricosa2181-10x_nuq': 'ventricosa2181-10x_nuq',      
-      'Aegilops ventricosa (ND genomes - tetraploid) - ventricosa2210-10x_all': 'ventricosa2210-10x_all',      
-      'Aegilops ventricosa (ND genomes - tetraploid) - ventricosa2211-10x_nuq': 'ventricosa2211-10x_nuq',
-      'Aegilops ventricosa (ND genomes - tetraploid) - ventricosa2234-10x_all': 'ventricosa2234-10x_all',     
-      'Secale cereale (R genome) - Lo7_nuq': 'Lo7_nuq',
-      'Thinopyrum elongatum (E genome - diploid) - elongathum-10x_nuq': 'elongathum-10x_nuq',
-      'Thinopyrum ponticum (E genome - decaploid) - ponticumG37_nuq': 'ponticumG37_nuq',
-      'Thinopyrum ponticum (E genome - decaploid) - ponticumG38_nuq': 'ponticumG38_nuq',     
-      'Thinopyrum ponticum (E genome - decaploid) - ponticumG39-10x_nuq': 'ponticumG39-10x_nuq',
-      'Triticum timopheevii (AG genomes - tetraploid) - timopheevi33255-10x_nuq': 'timopheevi33255-10x_nuq',
-      'Triticum timopheevii (AG genomes - tetraploid) - timopheevii10558_nuq.jf': 'timopheevii10558_nuq_jf',
-      'Triticum timopheevii (AG genomes - tetraploid) - timopheevi10827-10x_nuq':  'timopheevi10827-10x_nuq',    
-      'Triticum timopheevii (AG genomes - tetraploid) - timopheevii10827-10x-all_all': 'timopheevii10827-10x-all_all',     
-      'Triticum timopheevii (AG genomes - tetraploid) - timopheevii14352_nuq.jf': 'timopheevii14352_nuq_jf',     
-      'Triticum timopheevii (AG genomes - tetraploid) - timopheevii15832_nuq.jf': 'timopheevii15832_nuq_jf',
-      'Triticum timopheevii (AG genomes - tetraploid) - timopheevii17024-10x_all': 'timopheevii17024-10x_all',
-      'Triticum timopheevii (AG genomes - tetraploid) - timopheevii22438_nuq.jf': 'timopheevii22438_nuq_jf',
-      'Triticum timopheevii (AG genomes - tetraploid) - timopheevii3708_nuq.jf': 'timopheevii3708_nuq_jf',     
-      'Triticum turgidum ssp. dicoccoides (AB genome - tetraploid) - dicoccoides-10x_nuq': 'dicoccoides-10x_nuq',
-      'Triticum turgidum ssp. dicoccum (AB genome - tetraploid) - svevo-10x_nuq': 'svevo-10x_nuq',
-      'Triticum urartu (A genome) - urartu-10x_nuq': 'urartu-10x_nuq'}
-    
-    
-    
+alien = {'Ae. tauschii: BW_01011': 'BW_01011',
+         'Ae. tauschii: BW_01022': 'BW_01022',      
+         'Ae. tauschii: BW_01024': 'BW_01024',      
+         'Ae. tauschii: BW_01026': 'BW_01026',      
+         'Ae. tauschii: BW_01014': 'BW_01014',
+         'Ae. tauschii: BW_01028': 'BW_01028',        
+         'Ae. tauschii: ENT336': 'ENT336',
+         'Ae. speltoides: speltoides-10x_nuq': 'speltoides-10x_nuq',
+         'Ae. ventricosa: ventricosa-10x_nuq': 'ventricosa-10x_nuq',
+         'Ae. ventricosa: ventricosa2067-10x_nuq': 'ventricosa2067-10x_nuq',   
+         'Ae. ventricosa: ventricosa2181': 'ventricosa2181', 
+         'Ae. ventricosa: ventricosa2181-10x_nuq': 'ventricosa2181-10x_nuq',      
+         'Ae. ventricosa: ventricosa2210-10x_all': 'ventricosa2210-10x_all',      
+         'Ae. ventricosa: ventricosa2211-10x_nuq': 'ventricosa2211-10x_nuq',
+         'Ae. ventricosa: ventricosa2234-10x_all': 'ventricosa2234-10x_all',     
+         'Secale cereale: Lo7_nuq': 'Lo7_nuq',
+         'Th. elongatum: elongathum-10x_nuq': 'elongathum-10x_nuq',
+         'Th. ponticum: ponticumG37_nuq': 'ponticumG37_nuq',
+         'Th. ponticum: ponticumG38_nuq': 'ponticumG38_nuq',     
+         'Th. ponticum: ponticumG39-10x_nuq': 'ponticumG39-10x_nuq',
+         'T. timopheevii: timopheevi33255-10x_nuq': 'timopheevi33255-10x_nuq',
+         'T. timopheevii: timopheevii10558_nuq.jf': 'timopheevii10558_nuq_jf',
+         'T. timopheevii: timopheevi10827-10x_nuq':  'timopheevi10827-10x_nuq',    
+         'T. timopheevii: timopheevii10827-10x-all_all': 'timopheevii10827-10x-all_all',     
+         'T. timopheevii: timopheevii14352_nuq.jf': 'timopheevii14352_nuq_jf',     
+         'T. timopheevii: timopheevii15832_nuq.jf': 'timopheevii15832_nuq_jf',
+         'T. timopheevii: timopheevii17024-10x_all': 'timopheevii17024-10x_all',
+         'T. timopheevii: timopheevii22438_nuq.jf': 'timopheevii22438_nuq_jf',
+         'T. timopheevii: timopheevii3708_nuq.jf': 'timopheevii3708_nuq_jf',     
+         'T. turgidum ssp. dicoccoides: dicoccoides-10x_nuq': 'dicoccoides-10x_nuq',
+         'T. turgidum ssp. dicoccum: svevo-10x_nuq': 'svevo-10x_nuq',
+         'T. urartu: urartu-10x_nuq': 'urartu-10x_nuq'
+         }
+
 st.markdown("""
                 
             ---
                 
             """)
             
-
 st.markdown(f'#### Reference genome: {refGenome}')
 st.write('Number of bins with scores less than 30')
-
 
 chrm = ['1A', '2A', '3A', '4A', '5A', '6A', '7A',
       '1B', '2B', '3B', '4B', '5B', '6B', '7B',
