@@ -174,5 +174,3 @@ st.markdown("""
             """
                 
             )
-    
-st.write(st.session_state)
