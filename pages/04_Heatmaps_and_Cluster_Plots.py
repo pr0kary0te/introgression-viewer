@@ -11,6 +11,13 @@ import seaborn as sns
 
 st.set_page_config(layout="wide")
 
+st.markdown(""" <style> .font1 {
+    font-size: 45px; font-family: 'Copper Black'; color: #FF9633}
+    </style> """, unsafe_allow_html=True)
+
+st.markdown(""" <style> .font2 {
+    font-size: 30px; font-family: 'Copper Black'; color: #FF9633}
+    </style> """, unsafe_allow_html=True)
 
 ################################# FUNCTIONS ###################################
 
@@ -24,9 +31,10 @@ def getData(filePath):
 
 ###############################################################################
 
+dfWildSpeciesList = pd.read_csv('./data/wild_relatives_introduction.csv')
 
+st.markdown('<h1 class="font1">Clustering of Wild Relatives</h1>', unsafe_allow_html=True)
 st.markdown("""
-            # Clustering of Wild Relatives
             
             ---
             
@@ -111,43 +119,67 @@ st.markdown("""
 chromosome = 'chr' + chrm + refFiles[refGenome][1]
 dfChr = df[df['seqname'] == chromosome]
     
-st.markdown('## Heatmap and Cluster Plots of Wild Relatives')
+col1, col2 = st.columns([3,2], gap='small')
 
-variety_list = ['ENT336',
-                'BW_01011',
-                'BW_01014',
-                'BW_01022',
-                'BW_01024',
-                'BW_01026',
-                'BW_01028',
-                'dicoccoides-10x_nuq',
-                'elongathum-10x_nuq',
-                'Lo7_nuq',
-                'ponticumG37_nuq',
-                'ponticumG38_nuq',
-                'ponticumG39-10x_nuq',
-                'speltoides-10x_nuq',
-                'svevo-10x_nuq',
-                'timopheevi10827-10x_nuq',
-                'timopheevi33255-10x_nuq',
-                'timopheevii10558_nuq.jf',
-                'timopheevii10827-10x-all_all',
-                'timopheevii14352_nuq.jf',
-                'timopheevii15832_nuq.jf',
-                'timopheevii17024-10x_all',
-                'timopheevii22438_nuq.jf',
-                'timopheevii3708_nuq.jf',
-                'urartu-10x_nuq',
-                'ventricosa-10x_nuq',
-                'ventricosa2067-10x_nuq',
-                'ventricosa2181',
-                'ventricosa2181-10x_nuq',
-                'ventricosa2210-10x_all',
-                'ventricosa2211-10x_nuq',
-                'ventricosa2234-10x_all']
+with col1:
 
-ax = sns.clustermap(dfChr[variety_list].corr())
-st.pyplot(ax)
+    st.markdown('<p class="font2">Heatmap and Cluster Plots of Wild Relatives</p>', unsafe_allow_html=True)    
+
+    variety_list = ['ENT336',
+                    'BW_01011',
+                    'BW_01014',
+                    'BW_01022',
+                    'BW_01024',
+                    'BW_01026',
+                    'BW_01028',
+                    'dicoccoides-10x_nuq',
+                    'elongathum-10x_nuq',
+                    'Lo7_nuq',
+                    'ponticumG37_nuq',
+                    'ponticumG38_nuq',
+                    'ponticumG39-10x_nuq',
+                    'speltoides-10x_nuq',
+                    'svevo-10x_nuq',
+                    'timopheevi10827-10x_nuq',
+                    'timopheevi33255-10x_nuq',
+                    'timopheevii10558_nuq.jf',
+                    'timopheevii10827-10x-all_all',
+                    'timopheevii14352_nuq.jf',
+                    'timopheevii15832_nuq.jf',
+                    'timopheevii17024-10x_all',
+                    'timopheevii22438_nuq.jf',
+                    'timopheevii3708_nuq.jf',
+                    'urartu-10x_nuq',
+                    'ventricosa-10x_nuq',
+                    'ventricosa2067-10x_nuq',
+                    'ventricosa2181',
+                    'ventricosa2181-10x_nuq',
+                    'ventricosa2210-10x_all',
+                    'ventricosa2211-10x_nuq',
+                    'ventricosa2234-10x_all']
+    
+    dfChr = dfChr.rename(columns={'ENT336': 'Ae. tauschii (ENT336)',
+                                  'BW_01011': 'Ae. tauschii (BW_01011)',
+                                  'BW_01022': 'Ae. tauschii (BW_01022)',
+                                  'BW_01014': 'Ae. tauschii (BW_01014)',
+                                  'BW_01024': 'Ae. tauschii (BW_01024)',
+                                  'BW_01026': 'Ae. tauschii (BW_01026)',
+                                  'BW_01028': 'Ae. tauschii (BW_01028)',
+                                  'elongathum-10x_nuq': 'Th. elongatum',
+                                  'Lo7_nuq': 'Secale cereale',
+                                  'svevo-10x_nuq': 'T. dicoccum (Svevo)'
+                                  })
+    ax = sns.clustermap(dfChr.iloc[:, 4:35].corr())
+    st.pyplot(ax)
+    
+with col2:
+    
+    with st.expander("Alien species and their genome designation"):
+        st.write("The table below lists the alien species that are available to be checked against the reference species for potential introgressions.")
+        st.table(dfWildSpeciesList)
+
+
+
 
 if st.checkbox('Show Similarty Matrix'):
 
