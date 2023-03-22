@@ -11,9 +11,7 @@ import pandas as pd
 st.set_page_config(layout="wide")
 
 st.markdown(""" <style> .font1 {
-    font-size: 45px; font-family: 'Copper Black'; color: #FF9633},
-    .font2 {
-    font-size: 30px; font-family: 'Copper Black'; color: #FF9633}
+    font-size: 45px; font-family: 'Copper Black'; color: #FF9633}
     </style> """, unsafe_allow_html=True)
     
  
@@ -155,9 +153,6 @@ for j in chrm:
     chromosome = 'chr' + j + refFiles[refGenome][1]
 
     dfChr = df[df['seqname'] == chromosome]
-
-    # Adjust the bin number so that it begins at zero (1) for each chromosome.
-    dfChr['Adjusted Bin'] = dfChr['Bin'] - dfChr.iloc[0,0]
 
     my_list = []
     for i in alien:
