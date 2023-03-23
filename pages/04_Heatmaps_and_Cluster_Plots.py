@@ -167,9 +167,30 @@ with col1:
                                   'BW_01028': 'Ae. tauschii (BW_01028)',
                                   'elongathum-10x_nuq': 'Th. elongatum',
                                   'Lo7_nuq': 'Secale cereale',
-                                  'svevo-10x_nuq': 'T. dicoccum (Svevo)'
+                                  'ponticumG37_nuq': 'Th. ponticum (37)',
+                                  'ponticumG38_nuq': 'Th. ponticum (38)',
+                                  'ponticumG39-10x_nuq': 'Th. ponticum (39)',
+                                  'speltoides-10x_nuq': 'T. speltoides',
+                                  'svevo-10x_nuq': 'T. dicoccum (Svevo)',
+                                  'timopheevi10827-10x_nuq': 'T. timopheevii (10827)',
+                                  'timopheevi33255-10x_nuq': 'T. timopheevii (33255)',
+                                  'timopheevii10558_nuq.jf': 'T. timopheevii (10558)',
+                                  'timopheevii10827-10x-all_all': 'T. timopheevii (10827_all)',
+                                  'timopheevii14352_nuq.jf': 'T. timopheevii (14352)',
+                                  'timopheevii15832_nuq.jf': 'T. timopheevii (15832)',
+                                  'timopheevii17024-10x_all': 'T. timopheevii (17024)',
+                                  'timopheevii22438_nuq.jf': 'T. timopheevii (22438)',
+                                  'timopheevii3708_nuq.jf': 'T. timopheevii (3708)',
+                                  'urartu-10x_nuq': 'T. uratu',
+                                  'ventricosa-10x_nuq': 'Ae. ventricosa',
+                                  'ventricosa2067-10x_nuq': 'Ae. ventricosa (2067)',
+                                  'ventricosa2181': 'Ae. ventricosa (2181)',
+                                  'ventricosa2181-10x_nuq': 'Ae. ventricosa (2181 10x)',
+                                  'ventricosa2210-10x_all': 'Ae. ventricosa (2210)',
+                                  'ventricosa2211-10x_nuq': 'Ae. ventricosa (2211)',
+                                  'ventricosa2234-10x_all': 'Ae. ventricosa (2234)'
                                   })
-    ax = sns.clustermap(dfChr.iloc[:, 4:35].corr())
+    ax = sns.clustermap(dfChr.iloc[:, 4:36].corr())
     st.pyplot(ax)
     
 with col2:
