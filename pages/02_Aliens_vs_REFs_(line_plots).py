@@ -312,7 +312,7 @@ with col1:
         else:
             legend1_text = legend1_text
 
-        # st.image('./images/' + chrm, width = 600, caption=legend1_text)
+        st.image('./images/' + chrm_scale[chrm], caption=legend1_text)
 
 
 with col2:
