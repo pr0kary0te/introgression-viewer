@@ -12,43 +12,15 @@ import pandas as pd
 st.set_page_config(layout="wide")
 
 st.markdown(""" <style> .font1 {
-    font-size: 45px; font-family: 'Copper Black'; color: #FF9633},
-    .font2 {
+    font-size: 45px; font-family: 'Copper Black'; color: #FF9633}
+    </style> """, unsafe_allow_html=True)
+
+st.markdown(""" <style> .font2 {
     font-size: 30px; font-family: 'Copper Black'; color: #FF9633}
     </style> """, unsafe_allow_html=True)
 
 st.markdown(""" <style> .p { color: #FF0000} </style> """, unsafe_allow_html=True)
     
-    
-########################### INITIAL SESSION STATE #############################
-
-# The following lines of script set the session state when the various pages
-# are opened for the first time.  Particularly for the line_plot page I want
-# the user the see chromosome 2B (T. timopheevii hybridised to the reference
-# Lancer) because there is a large introgression.
-
-if 'index' not in st.session_state:
-    st.session_state.index = 4
-
-
-if 'indexGenome' not in st.session_state:
-    st.session_state.indexGenome = 4
-
-if 'genome' not in st.session_state:
-    st.session_state.genome = ('Arina', 'Chinese Spring', 'Jagger',
-                               'Julius', 'Lancer', 'Landmark', 'Mace',
-                               'Norin61', 'Spelt', 'Stanley', 'Mattis')
-
-         
-if 'indexChromosome' not in st.session_state:
-    st.session_state.indexChromosome = 8
-
-if 'chromosome' not in st.session_state:
-    st.session_state.chromosome = ('1A', '2A', '3A', '4A', '5A', '6A', '7A',
-                                   '1B', '2B', '3B', '4B', '5B', '6B', '7B',
-                                   '1D', '2D', '3D', '4D', '5D', '6D', '7D')
-    
-
 ###############################################################################
 
 
