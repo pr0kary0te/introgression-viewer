@@ -13,12 +13,10 @@ st.set_page_config(layout="wide")
 
 st.markdown(""" <style> .font1 {
     font-size: 45px; font-family: 'Copper Black'; color: #FF9633}
-    }
     </style> """, unsafe_allow_html=True)
 
 st.markdown(""" <style> .font2 {
     font-size: 30px; font-family: 'Copper Black'; color: #FF9633}
-    }
     </style> """, unsafe_allow_html=True)
 
 
@@ -34,6 +32,7 @@ def getData(filePath):
 def change_index(df):
     bin_list = list(range(1,(len(df) + 1)))
     df['Adjusted Bin'] = bin_list
+    # df.set_index('Adjusted Bin', inplace=True)
     
     return df
 
@@ -46,11 +45,11 @@ with st.sidebar:
     
     refGenome = st.selectbox(
         label='Select Reference Genome:',
-        options=st.session_state.genome,
-        index=st.session_state.indexGenome,
+        options=('Arina', 'Chinese Spring', 'Jagger',
+                 'Julius', 'Lancer', 'Landmark', 'Mace',
+                 'Norin61', 'Spelt', 'Stanley', 'Mattis'),
+        index=4,
         key='ref')
-
-
 
 # Update the index. It is used in the selectbox.
     # st.session_state.index = st.session_state.genome.index(st.session_state.ref)
@@ -111,20 +110,20 @@ with st.sidebar:
                        'T. timopheevii: timopheevi33255-10x_nuq',
                        'T. turgidum ssp. dicoccoides: dicoccoides-10x_nuq',
                        'T. turgidum ssp. dicoccum: svevo-10x_nuq',
-                       'T. urartu: urartu-10x_nuq'
-                      ]
+                       'T. urartu: urartu-10x_nuq'                      
+                       ]
         
     alienGenome1 = st.selectbox(
         'Select first alien species ...',
-        alienGenomeList,
-         29,
+         alienGenomeList,
+         index=29,
          key='alien1'
         )
 
     alienGenome2 = st.selectbox(
         'Select second alien species ...',
-        alienGenomeList,
-         23,
+         alienGenomeList,
+         index=23,
          key='alien2'
         )         
          
@@ -164,8 +163,10 @@ with st.sidebar:
 
     chrm = st.selectbox(
         label='Select chromosome:',
-        options=st.session_state.chromosome,
-        index=st.session_state.indexChromosome,
+        options=('1A', '2A', '3A', '4A', '5A', '6A', '7A',
+                 '1B', '2B', '3B', '4B', '5B', '6B', '7B',
+                '1D', '2D', '3D', '4D', '5D', '6D', '7D'),
+        index=8,
         key='chrm')
 
 
@@ -227,13 +228,13 @@ with st.container():
                 """
                 )
 
-    # st.write(st.session_state)
     
 col1, col2 = st.columns([3,2], gap='small')
 
 with col1:
 
-    chromosome = 'chr' + st.session_state['chrm'] + refFiles[st.session_state['ref']][1]
+    chromosome = 'chr' + chrm + refFiles[refGenome][1]
+    # chromosome = 'chr' + st.session_state['chrm'] + refFiles[st.session_state['ref']][1]
     
     dfChr = df[df['seqname'] == chromosome]
 
@@ -262,7 +263,7 @@ with col1:
 
     st.altair_chart(c, use_container_width=True)    
    
-    with st.expander(f'Chromosome {st.session_state.chrm} diagram'):
+    with st.expander(f'Chromosome {chrm} diagram'):
         
         chrm_scale = {
             '1A': '1A.png',
@@ -288,30 +289,30 @@ with col1:
             '7D': '7D.png'
             }
         
-        st.header(f'Chromosome {st.session_state.chrm}')
+        st.header(f'Chromosome {chrm}')
 
-        legend1_text = 'Schematic representation of chromosome ' + st.session_state.chrm + ': image length (scale bar) is based on the mean number of 50 Kb bins spanning chromosome ' + st.session_state.chrm + ' in the 11 reference genomes; morphology is based on Gill (2015).  The scale bar is in bin numbers and relates directy to the underlying plots; one can convert length to Mb by multiplying bin number by 50,000.'
+        legend1_text = 'Schematic representation of chromosome ' + chrm + ': image length (scale bar) is based on the mean number of 50 Kb bins spanning chromosome ' + chrm + ' in the 11 reference genomes; morphology is based on Gill (2015).  The scale bar is in bin numbers and relates directy to the underlying plots; one can convert length to Mb by multiplying bin number by 50,000.'
 
-        legend1_text_6A = '  Please note, Spelt chromosome '+ st.session_state.chrm + ' is smaller (11,670 bins) than that of the other reference varieties'
-        legend1_text_2B = '  Please note, Lancer chromosome ' + st.session_state.chrm + ' is smaller (13,432 bins) than that of the other reference varieties'
-        legend1_text_3B = '  Please note, Arina chromosome ' + st.session_state.chrm + ' is larger (17,817 bins) than that of the other reference varieties'
+        legend1_text_6A = '  Please note, Spelt chromosome '+ chrm + ' is smaller (11,670 bins) than that of the other reference varieties'
+        legend1_text_2B = '  Please note, Lancer chromosome ' + chrm + ' is smaller (13,432 bins) than that of the other reference varieties'
+        legend1_text_3B = '  Please note, Arina chromosome ' + chrm + ' is larger (17,817 bins) than that of the other reference varieties'
         legend1_text_5B = '  Please note, Arina and SY Mattis carry the chromosome whole arm translocation chromosome 5BS / 7BS rather than 5B.'
         legend1_text_7B = '  Please note, Arina and SY Mattis carry the chromosome whole arm translocation chromosome 5BL / 7BL rather than 7B.'
 
-        if st.session_state.chrm == '6A':
+        if chrm == '6A':
             legend1_text = legend1_text + legend1_text_6A
-        elif st.session_state.chrm == '2B':
+        elif chrm == '2B':
             legend1_text = legend1_text + legend1_text_2B    
-        elif st.session_state.chrm == '3B':
+        elif chrm == '3B':
             legend1_text = legend1_text + legend1_text_3B        
-        elif st.session_state.chrm == '5B':
+        elif chrm == '5B':
             legend1_text = legend1_text + legend1_text_5B 
-        elif st.session_state.chrm == '7B':
+        elif chrm == '7B':
             legend1_text = legend1_text + legend1_text_7B
         else:
             legend1_text = legend1_text
 
-        st.image('./images/' + chrm_scale[st.session_state.chrm], width = 600, caption=legend1_text)
+        # st.image('./images/' + chrm, width = 600, caption=legend1_text)
 
 
 with col2:
@@ -332,3 +333,5 @@ with col2:
         
     # Plot the density distribution chart
     st.plotly_chart(fig, use_container_width=True)
+    
+st.write(dfChr)
