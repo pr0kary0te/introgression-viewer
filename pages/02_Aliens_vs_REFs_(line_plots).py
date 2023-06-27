@@ -109,7 +109,7 @@ with st.sidebar:
                        'T. timopheevii: timopheevii22438_nuq.jf',
                        'T. timopheevii: timopheevi33255-10x_nuq',
                        'T. turgidum ssp. dicoccoides: dicoccoides-10x_nuq',
-                       'T. turgidum ssp. dicoccum: svevo-10x_nuq',
+                       'T. turgidum ssp. durum: svevo-10x_nuq',
                        'T. urartu: urartu-10x_nuq'                      
                        ]
         
@@ -157,7 +157,7 @@ with st.sidebar:
              'T. timopheevii: timopheevii22438_nuq.jf': 'timopheevii22438_nuq_jf',
              'T. timopheevii: timopheevii3708_nuq.jf': 'timopheevii3708_nuq_jf',     
              'T. turgidum ssp. dicoccoides: dicoccoides-10x_nuq': 'dicoccoides-10x_nuq',
-             'T. turgidum ssp. dicoccum: svevo-10x_nuq': 'svevo-10x_nuq',
+             'T. turgidum ssp. durum: svevo-10x_nuq': 'svevo-10x_nuq',
              'T. urartu: urartu-10x_nuq': 'urartu-10x_nuq'
              }
 
