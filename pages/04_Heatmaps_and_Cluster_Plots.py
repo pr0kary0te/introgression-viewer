@@ -172,7 +172,7 @@ with col1:
                                   'ponticumG38_nuq': 'Th. ponticum (38)',
                                   'ponticumG39-10x_nuq': 'Th. ponticum (39)',
                                   'speltoides-10x_nuq': 'Ae. speltoides',
-                                  'svevo-10x_nuq': 'T. dicoccum (Svevo)',
+                                  'svevo-10x_nuq': 'T. durum (Svevo)',
                                   'timopheevi10827-10x_nuq': 'T. timopheevii (10827)',
                                   'timopheevi33255-10x_nuq': 'T. timopheevii (33255)',
                                   'timopheevii10558_nuq.jf': 'T. timopheevii (10558)',
