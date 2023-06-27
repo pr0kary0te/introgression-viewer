@@ -145,7 +145,7 @@ st.markdown("""
             """)
             
 st.markdown(f'#### Reference genome: {refGenome}')
-st.write('Number of bins with scores less than 30')
+st.write(f'##### Threshold similarity for inclusion {score_threshold}')
 
 chrm = ['1A', '2A', '3A', '4A', '5A', '6A', '7A',
       '1B', '2B', '3B', '4B', '5B', '6B', '7B',
