@@ -145,7 +145,8 @@ st.markdown("""
             """)
             
 st.markdown(f'#### Reference genome: {refGenome}')
-st.write(f'##### Threshold similarity for inclusion {score_threshold}')
+st.write(f'##### Threshold similarity for inclusion: {score_threshold}')
+
 
 chrm = ['1A', '2A', '3A', '4A', '5A', '6A', '7A',
       '1B', '2B', '3B', '4B', '5B', '6B', '7B',
@@ -172,4 +173,5 @@ for j in chrm:
             dfNew.loc[len(dfNew)] = my_list
             my_list = []
 
+st.write(f'The number of potential introgression shown in the table is {len(dfNew)}') 
 st.write(dfNew)
