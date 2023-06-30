@@ -19,6 +19,7 @@ st.markdown(""" <style> .font2 {
     font-size: 30px; font-family: 'Copper Black'; color: #FF9633}
     </style> """, unsafe_allow_html=True)
 
+
 ################################# FUNCTIONS ###################################
 
 
@@ -28,6 +29,84 @@ def getData(filePath):
      
     return df
 
+
+def dropREF(refGenome, dfChr):
+    
+    if refGenome == 'Arina':
+        dfChrNew = dfChr.drop(['arina-pg'], axis = 1)
+    if refGenome == 'Chinese Spring':
+        dfChrNew = dfChr.drop(['chinese-pg'], axis = 1)    
+    if refGenome == 'Jagger':
+        dfChrNew = dfChr.drop(['jagger-pg'], axis = 1)    
+    if refGenome == 'Julius':
+        dfChrNew = dfChr.drop(['julius-pg'], axis = 1)    
+    if refGenome == 'Lancer':
+        dfChrNew = dfChr.drop(['lancer-pg'], axis = 1)    
+    if refGenome == 'Landmark':
+        dfChrNew = dfChr.drop(['landmark-pg'], axis = 1)
+    if refGenome == 'Mace':
+        dfChrNew = dfChr.drop(['mace-pg'], axis = 1)
+    if refGenome == 'Mattis':
+        dfChrNew = dfChr.drop(['mattis-pg'], axis = 1)    
+    if refGenome == 'Norin61':
+        dfChrNew = dfChr.drop(['norin61-pg'], axis = 1)    
+    if refGenome == 'Spelt':
+        dfChrNew = dfChr.drop(['spelt-pg'], axis = 1)    
+    elif refGenome == 'Stanley':
+        dfChrNew = dfChr.drop(['stanley-pg'], axis = 1)
+        
+    return dfChrNew
+
+
+def changeColNames(df):
+    
+    dfChrNew = df.rename(columns={'ENT336': 'Ae. tauschii (ENT336)',
+                'BW_01011': 'Ae. tauschii (BW_01011)',
+                'BW_01022': 'Ae. tauschii (BW_01022)',
+                'BW_01014': 'Ae. tauschii (BW_01014)',
+                'BW_01024': 'Ae. tauschii (BW_01024)',
+                'BW_01026': 'Ae. tauschii (BW_01026)',
+                'BW_01028': 'Ae. tauschii (BW_01028)',
+                'dicoccoides-10x_nuq': 'T. dicoccoides',
+                'elongathum-10x_nuq': 'Th. elongatum',
+                'Lo7_nuq': 'Secale cereale',
+                'ponticumG37_nuq': 'Th. ponticum (37)',
+                'ponticumG38_nuq': 'Th. ponticum (38)',
+                'ponticumG39-10x_nuq': 'Th. ponticum (39)',
+                'speltoides-10x_nuq': 'Ae. speltoides',
+                'svevo-10x_nuq': 'T. durum (Svevo)',
+                'timopheevi10827-10x_nuq': 'T. timopheevii (10827)',
+                'timopheevi33255-10x_nuq': 'T. timopheevii (33255)',
+                'timopheevii10558_nuq.jf': 'T. timopheevii (10558)',
+                'timopheevii10827-10x-all_all': 'T. timopheevii (10827_all)',
+                'timopheevii14352_nuq.jf': 'T. timopheevii (14352)',
+                'timopheevii15832_nuq.jf': 'T. timopheevii (15832)',
+                'timopheevii17024-10x_all': 'T. timopheevii (17024)',
+                'timopheevii22438_nuq.jf': 'T. timopheevii (22438)',
+                'timopheevii3708_nuq.jf': 'T. timopheevii (3708)',
+                'urartu-10x_nuq': 'T. urartu',
+                'ventricosa-10x_nuq': 'Ae. ventricosa',
+                'ventricosa2067-10x_nuq': 'Ae. ventricosa (2067)',
+                'ventricosa2181': 'Ae. ventricosa (2181)',
+                'ventricosa2181-10x_nuq': 'Ae. ventricosa (2181 10x)',
+                'ventricosa2210-10x_all': 'Ae. ventricosa (2210)',
+                'ventricosa2211-10x_nuq': 'Ae. ventricosa (2211)',
+                'ventricosa2234-10x_all': 'Ae. ventricosa (2234)',
+                'arina-pg': 'Arina',
+                'chinese-pg': 'Chinese Spring',
+                'jagger-pg': 'Jagger',
+                'julius-pg': 'Julius',
+                'lancer-pg': 'Lancer',
+                'landmark-pg': 'Landmark',
+                'mace-pg': 'Mace',
+                'mattis-pg': 'Mattis',
+                'norin61-pg': 'Norin 61',
+                'spelt-pg': 'Spelt',
+                'stanley-pg': 'Stanley'
+                })
+    
+    return(dfChrNew)
+    
 
 ###############################################################################
 
@@ -76,7 +155,7 @@ with col2:
     refGenome = st.selectbox(
         'Select the reference genome',
         ['Arina', 'Chinese Spring', 'Jagger', 'Julius', 'Lancer', 'Landmark', 
-         'Mace', 'Norin61', 'Spelt', 'Stanley', 'Mattis'],
+         'Mace', 'Mattis', 'Norin61', 'Spelt', 'Stanley'],
         0
         )
 
@@ -99,7 +178,7 @@ with col2:
     filePath = refFiles[refGenome][0]
 
     df = getData(filePath)
-
+    
     chrm = st.selectbox(
         'Which chromosome do you wish to view?',
         ['1A', '2A', '3A', '4A', '5A', '6A', '7A',
@@ -118,80 +197,25 @@ st.markdown("""
 
 chromosome = 'chr' + chrm + refFiles[refGenome][1]
 dfChr = df[df['seqname'] == chromosome]
+
+
+dfChrNew = dropREF(refGenome, dfChr)
+  
     
-col1, col2 = st.columns([3,2], gap='small')
+col1, col2 = st.columns([5,2], gap='small')
+
+# In column 1 the heatmap is plotted
+# Column 2 is initially empty, but there is the possibility to see a dropdown table showing
+# the genome constitution of the various alien species used in the study.
 
 with col1:
 
     st.markdown('<p class="font2">Heatmap and Cluster Plots of Wild Relatives</p>', unsafe_allow_html=True)    
 
-    variety_list = ['ENT336',
-                    'BW_01011',
-                    'BW_01014',
-                    'BW_01022',
-                    'BW_01024',
-                    'BW_01026',
-                    'BW_01028',
-                    'dicoccoides-10x_nuq',
-                    'elongathum-10x_nuq',
-                    'Lo7_nuq',
-                    'ponticumG37_nuq',
-                    'ponticumG38_nuq',
-                    'ponticumG39-10x_nuq',
-                    'speltoides-10x_nuq',
-                    'svevo-10x_nuq',
-                    'timopheevi10827-10x_nuq',
-                    'timopheevi33255-10x_nuq',
-                    'timopheevii10558_nuq.jf',
-                    'timopheevii10827-10x-all_all',
-                    'timopheevii14352_nuq.jf',
-                    'timopheevii15832_nuq.jf',
-                    'timopheevii17024-10x_all',
-                    'timopheevii22438_nuq.jf',
-                    'timopheevii3708_nuq.jf',
-                    'urartu-10x_nuq',
-                    'ventricosa-10x_nuq',
-                    'ventricosa2067-10x_nuq',
-                    'ventricosa2181',
-                    'ventricosa2181-10x_nuq',
-                    'ventricosa2210-10x_all',
-                    'ventricosa2211-10x_nuq',
-                    'ventricosa2234-10x_all']
+    dfChrNew = changeColNames(dfChrNew)
     
-    dfChr = dfChr.rename(columns={'ENT336': 'Ae. tauschii (ENT336)',
-                                  'BW_01011': 'Ae. tauschii (BW_01011)',
-                                  'BW_01022': 'Ae. tauschii (BW_01022)',
-                                  'BW_01014': 'Ae. tauschii (BW_01014)',
-                                  'BW_01024': 'Ae. tauschii (BW_01024)',
-                                  'BW_01026': 'Ae. tauschii (BW_01026)',
-                                  'BW_01028': 'Ae. tauschii (BW_01028)',
-                                  'elongathum-10x_nuq': 'Th. elongatum',
-                                  'dicoccoides-10x_nuq': 'T. dicoccoides',
-                                  'Lo7_nuq': 'Secale cereale',
-                                  'ponticumG37_nuq': 'Th. ponticum (37)',
-                                  'ponticumG38_nuq': 'Th. ponticum (38)',
-                                  'ponticumG39-10x_nuq': 'Th. ponticum (39)',
-                                  'speltoides-10x_nuq': 'Ae. speltoides',
-                                  'svevo-10x_nuq': 'T. durum (Svevo)',
-                                  'timopheevi10827-10x_nuq': 'T. timopheevii (10827)',
-                                  'timopheevi33255-10x_nuq': 'T. timopheevii (33255)',
-                                  'timopheevii10558_nuq.jf': 'T. timopheevii (10558)',
-                                  'timopheevii10827-10x-all_all': 'T. timopheevii (10827_all)',
-                                  'timopheevii14352_nuq.jf': 'T. timopheevii (14352)',
-                                  'timopheevii15832_nuq.jf': 'T. timopheevii (15832)',
-                                  'timopheevii17024-10x_all': 'T. timopheevii (17024)',
-                                  'timopheevii22438_nuq.jf': 'T. timopheevii (22438)',
-                                  'timopheevii3708_nuq.jf': 'T. timopheevii (3708)',
-                                  'urartu-10x_nuq': 'T. uratu',
-                                  'ventricosa-10x_nuq': 'Ae. ventricosa',
-                                  'ventricosa2067-10x_nuq': 'Ae. ventricosa (2067)',
-                                  'ventricosa2181': 'Ae. ventricosa (2181)',
-                                  'ventricosa2181-10x_nuq': 'Ae. ventricosa (2181 10x)',
-                                  'ventricosa2210-10x_all': 'Ae. ventricosa (2210)',
-                                  'ventricosa2211-10x_nuq': 'Ae. ventricosa (2211)',
-                                  'ventricosa2234-10x_all': 'Ae. ventricosa (2234)'
-                                  })
-    ax = sns.clustermap(dfChr.iloc[:, 4:36].corr())
+    sns.set(font_scale=0.8)
+    ax = sns.clustermap(dfChrNew.iloc[:, 4:47].corr())
     st.pyplot(ax)
     
 with col2:
@@ -201,9 +225,7 @@ with col2:
         st.table(dfWildSpeciesList)
 
 
-
-
 if st.checkbox('Show Similarty Matrix'):
 
     st.markdown('## Similarity Matrix')
-    st.write(dfChr[variety_list].corr())
+    st.write(dfChrNew.iloc[:, 4:47].corr())
