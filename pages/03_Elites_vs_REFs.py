@@ -59,7 +59,7 @@ with st.sidebar:
         key='ref')
     
 
-    refFiles = {'Arina': ['https://www.cerealsdb.uk.net/ibspy_data/arinaSortedElites.csv', '_WhAri'],
+    refFiles = {'Arina': ['https://www.cerealsdb.uk.net/ibspy_data/arina1_4.csv', '_WhAri'],
               'Chinese Spring': ['https://www.cerealsdb.uk.net/ibspy_data/chinese_springSortedElites.csv', ''],
               'Jagger': ['https://www.cerealsdb.uk.net/ibspy_data/jaggerSortedElites.csv', '_WhJag'],
               'Julius': ['https://www.cerealsdb.uk.net/ibspy_data/juliusSortedElites.csv', '_Whjul'],
