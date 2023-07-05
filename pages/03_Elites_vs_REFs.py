@@ -60,16 +60,16 @@ with st.sidebar:
     
 
     refFiles = {'Arina': ['https://www.cerealsdb.uk.net/ibspy_data/arina1_4.csv', '_WhAri'],
-              'Chinese Spring': ['https://www.cerealsdb.uk.net/ibspy_data/chinese_springSortedElites.csv', ''],
-              'Jagger': ['https://www.cerealsdb.uk.net/ibspy_data/jaggerSortedElites.csv', '_WhJag'],
-              'Julius': ['https://www.cerealsdb.uk.net/ibspy_data/juliusSortedElites.csv', '_Whjul'],
-              'Lancer': ['https://www.cerealsdb.uk.net/ibspy_data/lancerSortedElites.csv', '_Whlan'], 
-              'Landmark': ['https://www.cerealsdb.uk.net/ibspy_data/landmarkSortedElites.csv', '_WhLan'],
-              'Mace': ['https://www.cerealsdb.uk.net/ibspy_data/maceSortedElites.csv', '_Whmac'],
-              'Norin61': ['https://www.cerealsdb.uk.net/ibspy_data/norin61SortedElites.csv', '_WhNor'],
-              'Spelt': ['https://www.cerealsdb.uk.net/ibspy_data/speltaSortedElites.csv', '_Whspe'],
-              'Stanley': ['https://www.cerealsdb.uk.net/ibspy_data/stanleySortedElites.csv', '_WhSta'],
-              'Mattis': ['https://www.cerealsdb.uk.net/ibspy_data/sy_mattisSortedElites.csv', '_WhSYM']
+              'Chinese Spring': ['https://www.cerealsdb.uk.net/ibspy_data/chinese1_4.csv', ''],
+              'Jagger': ['https://www.cerealsdb.uk.net/ibspy_data/jagger1_4.csv', '_WhJag'],
+              'Julius': ['https://www.cerealsdb.uk.net/ibspy_data/julius1_4.csv', '_Whjul'],
+              'Lancer': ['https://www.cerealsdb.uk.net/ibspy_data/lancer1_4.csv', '_Whlan'], 
+              'Landmark': ['https://www.cerealsdb.uk.net/ibspy_data/landmark1_4.csv', '_WhLan'],
+              'Mace': ['https://www.cerealsdb.uk.net/ibspy_data/mace1_4.csv', '_Whmac'],
+              'Mattis': ['https://www.cerealsdb.uk.net/ibspy_data/mattis1_4.csv', '_WhSYM'],
+              'Norin61': ['https://www.cerealsdb.uk.net/ibspy_data/norin1_4.csv', '_WhNor'],
+              'Spelt': ['https://www.cerealsdb.uk.net/ibspy_data/spelt1_4.csv', '_Whspe'],
+              'Stanley': ['https://www.cerealsdb.uk.net/ibspy_data/stanley1_4.csv', '_WhSta']
               }
 
         
