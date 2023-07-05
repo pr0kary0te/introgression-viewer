@@ -101,7 +101,6 @@ st.markdown("""
                 
             """)
             
-
 # From the large dataframe (dfWhole), which contains the data for all 21 chromosomes,
 # create a smaller dataframe (dfChromosome) containing just the data for the selected
 # chromosome.
@@ -123,11 +122,11 @@ with col2:
         'Using the slider below, select the range (bin numbers) over which to search:',
         value=[0, len(dfChromosome)])    
     
- 
-
 # From the large dataframe (dfChromosome), which contains all the data for the
 # selected chromosome, create a smaller dataframe (dfChrm_slide) containing just
 # the data for the selected region of the chromosome.
 dfChrm_slide = dfChromosome.iloc[slider_range[0]:slider_range[1]]
 selected_range = len(dfChrm_slide)
+
+
 
