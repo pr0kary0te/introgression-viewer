@@ -111,28 +111,6 @@ dfChromosome = dfWhole[dfWhole['seqname'] == 'chr' + chrm + refFiles[refGenome][
 # is carried out by a function which is defined at the top of this script.
 dfChromosome = change_index(dfChromosome)
 
-# chrm_len_bins = int(len(dfChromosome))
-# chrm_len_mb = int(chrm_len_bins * 50000)
-
-# # Set up the radio buttons and slider to select a subset of the data
-# col1, col2, col3 = st.columns([1,1,4], gap='large')
-
-# with col1:
-    
-#     score_threshold = st.number_input('Score threshold (integer from 10 - 200):', min_value=10, max_value=200, value=30, key=1)
-
-
-# with col2:
-    
-#     percent_similarity = st.number_input('Required similarity (float from 0.01 - 0.99)', min_value=0.01, max_value=0.95, value=0.9, key=2)
-    
-
-# with col3:
-    
-#     slider_range = st.slider(
-#         'Using the slider below, select the range (bin numbers) over which to search:',
-#         value=[0, len(dfChromosome)])
-
 col1, col2 = st.columns([1,4], gap='large')
 
 with col1:
@@ -174,16 +152,6 @@ dfSumSorted.rename(columns = {'index':'Variety', 0:'Score Sum'},
 
 col1, col2 = st.columns([2, 5], gap = 'medium')
 
-# # with col1:
-    
-# #     st.subheader('Choices')
-# #     st.write(f'Ref. genome: {refGenome}')
-# #     st.write(f'Chromosome: {chrm}')
-# #     st.write(f'No. bins: {selected_range}')
-# #     st.write(f'Range: {slider_range[0]} - bin {slider_range[1]}')
-# #     st.write(f'Score threshold: {score_threshold}')
-# #     st.write(f'Percentage match: {percent_similarity}')
-
 with col1:
     
     st.markdown('<p class="font2">Scores</p>', unsafe_allow_html=True)
@@ -199,15 +167,15 @@ with col1:
     
 with col2:
     
-    col1a, col1b = st.columns(2, gap = 'small')
+    col2a, col2b = st.columns(2, gap = 'small')
         
-    with col1a:
+    with col2a:
         
-        choice1 = st.number_input('Select variety by number', value=1, min_value=0, key='Choice1')
+        choice1 = st.number_input('Select variety by number', value=2, min_value=0, key='Choice1')
         
-    with col1b:
+    with col2b:
 
-        choice2 = st.number_input('Select variety by number', label_visibility='hidden', value=3, min_value = 0, key = 'Choice2')
+        choice2 = st.number_input('Select variety by number', label_visibility='hidden', value=5, min_value = 0, key = 'Choice2')
  
     var1 = SeriesSumSorted.index[choice1]
     var2 = SeriesSumSorted.index[choice2]
@@ -228,15 +196,15 @@ with col2:
 
     st.altair_chart(c, use_container_width=True)
     
-    col1c, col1d = st.columns(2, gap = 'small')
+    col2c, col2d = st.columns(2, gap = 'small')
         
-    with col1c:
+    with col2c:
     
-        choice3 = st.number_input('Select variety by number', value=1, min_value=0, key='Choice3')
+        choice3 = st.number_input('Select variety by number', value=20, min_value=0, key='Choice3')
     
-    with col1d:
+    with col2d:
         
-        choice4 = st.number_input('Select variety by number', label_visibility='hidden', value=3, min_value = 0, key = 'Choice4')
+        choice4 = st.number_input('Select variety by number', label_visibility='hidden', value=200, min_value = 0, key = 'Choice4')
     
     var3 = SeriesSumSorted.index[choice3]
     var4 = SeriesSumSorted.index[choice4]
@@ -255,69 +223,4 @@ with col2:
 
     c = alt.layer(a, b)
 
-    st.altair_chart(c, use_container_width=True)
-    
-#01539D
-#EEA47F
-
-#606060
-#D6ED17
-
-#F4DF4E
-#949398
-
-#FC766A
-#5B84B0
-
-#5F4B8B
-#E69A8D
-
-#00203F
-#ADEFD1
-
-#90FF33
-#BB33FF
-
-
-# with st.expander('View dataframe of selected region'):  
-
-#     new_list1 = []
-#     new_list2 = []
-#     dfNew = pd.DataFrame(columns = ['Variety', 'Similarity'])
-#     counter = 1             
-#     for i in names:
-#         if len(dfChrm_slide[dfChrm_slide[i] <= score_threshold]) > (selected_range * percent_similarity):
-#             # st.write(f'{counter}:  {i}.  Percent similarity to reference across selected range: {(len(dfChrm_slide[dfChrm_slide[i] <= score_threshold]) / selected_range):.4f}')
-#             new_list1.append(i)
-#             new_list2.append(len(dfChrm_slide[dfChrm_slide[i] <= score_threshold]) / selected_range)
-#             counter += 1
-#     dfNew['Variety'] = new_list1
-#     dfNew['Similarity'] = new_list2
-#     st.write(dfNew)
-
-# dfNew = pd.DataFrame(columns = ['Variety', 'Similarity'])    
-    
-
-###############################################################################    
-    
-# Compute the correlation matrix
-# corr = dfChromosome[names].corr()
-# corr = dfChrm_slide[variety_list].corr()
-# corr = dfChromosome.iloc[:, 15:279].corr()
-
-# Generate a custom diverging colormap
-# cmap = sns.diverging_palette(0, 230, 90, 60, as_cmap=True)    
-
-# ax = sns.clustermap(corr, cmap=cmap, vmin=-0.1, vmax=1, 
-# cbar_kws={"shrink": .8})
-
-# st.pyplot(ax)
-
-###############################################################################
-
-
-# Adjust the bin number so that it begins at zero (1) for each chromosome.
-
-
-
-# st.write(dfChrm_slide)
+    st.altair_chart(c, use_container_width=True)   
