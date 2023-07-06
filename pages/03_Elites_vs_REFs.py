@@ -59,9 +59,9 @@ with st.sidebar:
         key='ref')
     
 
-    refFiles = {'Arina': ['https://www.cerealsdb.uk.net/ibspy_data/arina1_4.csv', '_WhAri'],
-              'Chinese Spring': ['https://www.cerealsdb.uk.net/ibspy_data/chinese1_4.csv', ''],
-              'Jagger': ['https://www.cerealsdb.uk.net/ibspy_data/jagger1_4.csv', '_WhJag'],
+    refFiles = {'Arina': ['https://www.cerealsdb.uk.net/ibspy_data/arinaSortedElites.zip', '_WhAri'],
+              'Chinese Spring': ['https://www.cerealsdb.uk.net/ibspy_data/chinese_springSortedElites.zip', ''],
+              'Jagger': ['https://www.cerealsdb.uk.net/ibspy_data/jaggerSortedElites.zip', '_WhJag'],
               'Julius': ['https://www.cerealsdb.uk.net/ibspy_data/julius1_4.csv', '_Whjul'],
               'Lancer': ['https://www.cerealsdb.uk.net/ibspy_data/lancer1_4.csv', '_Whlan'], 
               'Landmark': ['https://www.cerealsdb.uk.net/ibspy_data/landmark1_4.csv', '_WhLan'],
