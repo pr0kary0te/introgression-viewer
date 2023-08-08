@@ -122,7 +122,7 @@ def getImage(chrm):
 ###############################################################################
 
 
-dfTaNG = pd.read_csv('./data/TaNG1-1.csv')
+#dfTaNG = pd.read_csv('./data/TaNG1-1.csv')
 #dfRosetta = pd.read_csv('./data/RosettaStone.csv')
 
 dfTaNG_Rosetta = pd.read_csv('./data/TaNG-RosettaStone.csv')
@@ -134,9 +134,9 @@ dfTaNG_Rosetta = pd.read_csv('./data/TaNG-RosettaStone.csv')
 # The following lines of script are used to get the column headers, which include
 # the names of the varieties that have been genotyped, so that they can be printed
 
-column_names = list(dfTaNG.columns.values)
-for item in column_names:
-    item_reduced = item[4:]
+#column_names = list(dfTaNG.columns.values)
+#for item in column_names:
+#    item_reduced = item[4:]
     #st.write(f'{item_reduced}')
 
 ###############################################################################
