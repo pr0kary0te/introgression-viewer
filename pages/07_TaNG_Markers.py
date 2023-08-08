@@ -122,7 +122,7 @@ def getImage(chrm):
 ###############################################################################
 
 
-# dfTaNG = pd.read_csv('./data/TaNG1-1.csv')
+dfTaNG = pd.read_csv('./data/TaNG1-1.csv')
 # dfRosetta = pd.read_csv('./data/RosettaStone.csv')
 
 dfTaNG_Rosetta = pd.read_csv('./data/TaNG-RosettaStone.csv')
