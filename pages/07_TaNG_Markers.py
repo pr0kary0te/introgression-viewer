@@ -225,6 +225,8 @@ if submit:
             x=alt.X('Pos', scale=alt.Scale(domain=[0, xaxis])), y=alt.Y('markerScore', scale=alt.Scale(domain=[-0.3, 2])), color=alt.Color('Traffic Light', scale=alt.Scale(domain=dom, range=rng)), tooltip=['probeset_id', 'Allele A', 'Allele B'])
 
         st.altair_chart(c, use_container_width=True)
+
+        st.markdown(f'<h1 class="font2">3K Breeders Array Markers on Chromosome {chromosomeResult[2]} ({colour.iloc[0]})</h1>', unsafe_allow_html=True)
         
         c2 = alt.Chart(df35K).mark_circle().encode(
             x=alt.X('Pos', scale=alt.Scale(domain=[0, xaxis])), y=alt.Y('markerScore', scale=alt.Scale(domain=[-0.3, 2])), color=alt.Color('Traffic Light', scale=alt.Scale(domain=dom, range=rng)), tooltip=['probeset_id', 'Allele A', 'Allele B'])
