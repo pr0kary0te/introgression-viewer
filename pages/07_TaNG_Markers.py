@@ -301,73 +301,12 @@ if submit:
             st.write(dfToWrite)
         
         with st.expander('Table showing TaNG Markers that are also on the 35K Breeders Array'):
-            
-            st.write(df35K)
 
-        
-###############################################################################
-# The following lines of script are used to pull out all the markers between a 
-# selected range (Mb) on the chromosome.
-
-
-    # st.markdown('<h1 class="font1">Enter start</h1>', unsafe_allow_html=True)
-    # start = st.text_input("Start Position")
-    # end = st.text_input('End Position')
-    
-    start = 1000000
-    end = 4000000
-    includedMarkers = dfTaNGChrSorted2.loc[(dfTaNGChrSorted2['Pos'] >= start) & (dfTaNGChrSorted2['Pos'] <= end)]
-        
-    st.write(f'There are {len(includedMarkers)} markers in the selected region')
-        
-    st.write(includedMarkers)
-        
-    # Making two lists for
-    # values and colors resp.
-    dom = ['Green', 'Amber', 'Red']
-    rng = ['green', 'orange', 'red']
-        
-    c = alt.Chart(includedMarkers).mark_circle().encode(
-        x='Pos', y='markerScore', color=alt.Color('Traffic Light', scale=alt.Scale(domain=dom, range=rng)), tooltip=['probeset_id', 'Allele A', 'Allele B'])
-
-    st.altair_chart(c, use_container_width=False)
-
-###############################################################################
+            df35K = df35K.drop(columns=['markerScore'])
+            st.write(df35K)    
         
 else:
     
     st.write('No marker or marker list supplied!')
     
 
-###############################################################################
-
-# The following lines of script uses the data in the dfTaNG dataframe - derived
-# from the TaNG-1.csv file - and pulls out summaries based on Amanda's traffic
-# light system for giving confidence to the genotype calls for the various
-# markers (obviously, these are related to the data set - wheat accessions - studied)
-
-
-# chrm = ['1A', '2A', '3A', '4A', '5A', '6A', '7A',
-#         '1B', '2B', '3B', '4B', '5B', '6B', '7B',
-#         '1D', '2D', '3D', '4D', '5D', '6D', '7D']
-
-# for item in chrm:
-#     st.write(item)
-#     df = dfTaNG.loc[(dfTaNG['Chr'] == item)]
-#     red = len(df.loc[(df['Traffic Light'] == 'Red')])
-#     redMono = len(df.loc[(df['Traffic Light'] == 'Red') & (df['ConversionType'] == 'MonoHighResolution') ])
-#     amber = len(df.loc[(df['Traffic Light'] == 'Amber')])    
-#     green = len(df.loc[(df['Traffic Light'] == 'Green')])
-    
-#     st.write(f'Chromosome {item}: Red = {red}, Amber = {amber}, Green = {green}')
-#     st.write(f'{red / (red + amber + green)}%')
-#     st.write(f'{(red + amber) / (red + amber + green)}%')
-#     st.write(f'Red and monomorphic {redMono}')
-    
-#     st.write(len(dfRosetta.loc[dfRosetta['Chr'] == item]))
-    
-# st.write(len(dfTaNG.loc[dfTaNG['Traffic Light'] == 'Red']))    
-# st.write(len(dfTaNG.loc[dfTaNG['Traffic Light'] == 'Amber']))
-# st.write(len(dfTaNG.loc[dfTaNG['Traffic Light'] == 'Green']))
-
-###############################################################################
