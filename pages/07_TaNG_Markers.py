@@ -204,7 +204,7 @@ with col1:
 with col2:
     
     example = ['Marker',
-               'AX_643833569',
+               'AX-643833569',
                'AX-643869398',
                'AX-95250140'
                ]
