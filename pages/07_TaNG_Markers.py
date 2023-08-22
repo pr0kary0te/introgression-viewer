@@ -209,9 +209,8 @@ with col2:
                'AX-95250140'
                ]
     
-    exampleTable = pd.Series(example)
-    
-    
+#   exampleTable = pd.Series(example)
+ 
     st.markdown("""
                 
         Using this page, one can visual the chromosome position of selected
@@ -223,8 +222,9 @@ with col2:
         format of the csv file should be as follows:
             
         """)
-        
-    st.write(exampleTable)
+
+    for item in example:
+        st.write(item)
         
     st.markdown("""
                 
@@ -232,9 +232,6 @@ with col2:
         "submit" button.   
                 
         """)
-     
-
-    
 
 if submit:
     if not markerSingle and not uploaded_file:
