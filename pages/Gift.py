@@ -145,14 +145,10 @@ def createBinnedData(genesUp, genesDown, binDict, number):
 #
 # This data is used directly to plot the position of genes/markers along
 # chromosome arms.  The data is also use in the self defined fuction,
-# 'createBinnedData', to plot bar cahrts    
-
-
-# genesUp = pd.read_csv('./data/a_up.csv')
-# genesDown = pd.read_csv('./data/a_down.csv')
+# 'createBinnedData', to plot bar cahrts 
 
 with st.form('my_form', clear_on_submit=False):
-    
+  
     message = '''Using the four input buttons, select the files containing the
                  list of up- and down-regulated genes, the chromosome you wish
                  to view,and the number of bins for plotting the bar chart.  
@@ -160,6 +156,8 @@ with st.form('my_form', clear_on_submit=False):
               '''
     
     st.markdown(message)
+
+    submit = st.form_submit_button('Submit')
     
     col1, col2, col3, col4 = st.columns([2,2,1,1], gap='small')
 
@@ -194,7 +192,7 @@ with st.form('my_form', clear_on_submit=False):
         number = st.number_input("Number of bins (value between 10 and 100)", value=20,
                              min_value=10, max_value=100)
 
-    submit = st.form_submit_button('Submit')
+   
 
 binDict = createBins(number)
 dfBins = pd.DataFrame.from_dict(binDict)
