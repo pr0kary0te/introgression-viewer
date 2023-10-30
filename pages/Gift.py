@@ -7,10 +7,7 @@ Created on Fri Aug  4 11:34:14 2023
 
 import streamlit as st
 import pandas as pd
-import altair as alt
-#import os
 import plotly.express as px
-from io import StringIO
 
 st.set_page_config(page_title="Gene Positions Along Chromosomes", layout="wide")
 #st.write(os.getcwd())
@@ -131,96 +128,6 @@ def createBinnedData(genesUp, genesDown, binDict, number):
     return(dfResultsUp, dfResultsDown)
 
 ###############################################################################
-
-def getImage(chrm):
-    
-    chrm_scale = {
-        '1A': '1A.png',
-        '2A': '2A.png',
-        '3A': '3A.png',
-        '4A': '4A.png',
-        '5A': '5A.png',
-        '6A': '6A.png',
-        '7A': '7A.png',
-        '1B': '1B.png',
-        '2B': '2B.png',
-        '3B': '3B.png',
-        '4B': '4B.png',
-        '5B': '5B.png',
-        '6B': '6B.png',
-        '7B': '7B.png',
-        '1D': '1D.png',
-        '2D': '2D.png',
-        '3D': '3D.png',
-        '4D': '4D.png',
-        '5D': '5D.png',
-        '6D': '6D.png',
-        '7D': '7D.png'
-        }
-            
-    st.header(f'Chromosome {chrm}')
-
-    legend1_text = 'Schematic representation of chromosome ' + chrm + ': image length (scale bar) is based on the mean number of 50 Kb bins spanning chromosome ' + chrm + ' in the 11 reference genomes; morphology is based on Gill (2015).  The scale bar is in bin numbers and relates directy to the underlying plots; one can convert length to Mb by multiplying bin number by 50,000.'
-
-    legend1_text_6A = '  Please note, Spelt chromosome '+ chrm + ' is smaller (11,670 bins) than that of the other reference varieties'
-    legend1_text_2B = '  Please note, Lancer chromosome ' + chrm + ' is smaller (13,432 bins) than that of the other reference varieties'
-    legend1_text_3B = '  Please note, Arina chromosome ' + chrm + ' is larger (17,817 bins) than that of the other reference varieties'
-    legend1_text_5B = '  Please note, Arina and SY Mattis carry the chromosome whole arm translocation chromosome 5BS / 7BS rather than 5B.'
-    legend1_text_7B = '  Please note, Arina and SY Mattis carry the chromosome whole arm translocation chromosome 5BL / 7BL rather than 7B.'
-
-    if chrm == '6A':
-        legend1_text = legend1_text + legend1_text_6A
-    elif chrm == '2B':
-        legend1_text = legend1_text + legend1_text_2B    
-    elif chrm == '3B':
-        legend1_text = legend1_text + legend1_text_3B        
-    elif chrm == '5B':
-        legend1_text = legend1_text + legend1_text_5B 
-    elif chrm == '7B':
-        legend1_text = legend1_text + legend1_text_7B
-    else:
-        legend1_text = legend1_text
-          
-    imagePath = './images/' + chrm_scale[chrm]
-            
-    return(imagePath, legend1_text)
-
-###############################################################################
-
-def getTable(dfTaNG_Rosetta, markerType):
-    
-    chromo = ['1A', '2A', '3A', '4A', '5A', '6A', '7A',
-            '1B', '2B', '3B', '4B', '5B', '6B', '7B',
-            '1D', '2D', '3D', '4D', '5D', '6D', '7D']
-
-    Alist = []
-    Blist = []
-    Dlist =[]
-    
-    for chromosome in chromo:
-        df = dfTaNG_Rosetta.loc[chromosome]
-        bool_series = pd.notnull(df[markerType])
-        df = df[bool_series]
-
-        if chromosome[1] == 'A':
-            Alist.append(df.shape[0])
-        elif chromosome[1] =='B':
-            Blist.append(df.shape[0])
-        elif chromosome[1] == 'D':
-            Dlist.append(df.shape[0])
-            
-    scoresDict = {'A': Alist,
-                  'B': Blist,
-                  'D': Dlist
-                  } 
-
-    df1 = pd.DataFrame(scoresDict)
-    index = pd.Index([1,2,3,4,5,6,7])
-    df2 = df1.set_index(index)
-    
-    return(df2)
-    
-    
 ###############################################################################
 ###############################################################################
 
@@ -256,21 +163,6 @@ with st.form('my_form', clear_on_submit=False):
     
     col1, col2, col3, col4 = st.columns([2,2,1,1], gap='small')
 
-    with col4:
-
-        number = st.number_input("Number of bins (value between 10 and 100)", value=20,
-                             min_value=10, max_value=100)
-    
-    with col3:
-
-        chrm = st.selectbox(
-            'Select chromosome',
-            ['1A', '2A', '3A', '4A', '5A', '6A', '7A',
-             '1B', '2B', '3B', '4B', '5B', '6B', '7B',
-             '1D', '2D', '3D', '4D', '5D', '6D', '7D'],
-            0
-            )
-
     with col1:
 
         uploaded_file1 = st.file_uploader("Choose a file containing up-regulated genes", key='file1')
@@ -285,7 +177,22 @@ with st.form('my_form', clear_on_submit=False):
         if uploaded_file2 is not None:
             genesDown = pd.read_csv(uploaded_file2)
         else:
-            genesDown = pd.read_csv('./data/a_down.csv')
+            genesDown = pd.read_csv('./data/a_down.csv')   
+    
+    with col3:
+
+        chrm = st.selectbox(
+            'Select chromosome',
+            ['1A', '2A', '3A', '4A', '5A', '6A', '7A',
+             '1B', '2B', '3B', '4B', '5B', '6B', '7B',
+             '1D', '2D', '3D', '4D', '5D', '6D', '7D'],
+            0
+            )
+
+    with col4:
+
+        number = st.number_input("Number of bins (value between 10 and 100)", value=20,
+                             min_value=10, max_value=100)
 
     submit = st.form_submit_button('Submit')
 
