@@ -226,8 +226,13 @@ dfBins = pd.DataFrame.from_dict(binDict)
 with st.expander('Click to view bin boundaries', expanded = False):
     st.table(binDict)
 
-st.header('Number of Genes in Bins Across on Chromosomes')
-st.write(f'Selected chromosome: {chrm}')
+st.header(f'Number of Genes in {number} Bins Spanning Selected Chromosome ({chrm})')
+
+st.markdown('''
+                Hover over the bars of the plot to see the number of genes.
+                Zoom in and out of the plot using the controls at the top right of the plot.
+            '''
+           )
 
 # Use the function 'createBinnedData' (see above) to count the number of 
 # markers in each of the bins (this number is input by the user)
@@ -276,6 +281,12 @@ with col1:
 
 
 st.header('Gene Positions on Chromosomes')
+
+st.markdown('''
+                Hover over the sctter plot to see the names of the genes and, where available, the name of the protein for which they code.
+                Zoom in and out of the plot using the controls at the top right of the plot.
+            '''
+           )
 
 genesUp = getGeneName(genesUp)
 genesDown = getGeneName(genesDown)
