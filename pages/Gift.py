@@ -226,14 +226,14 @@ dfBins = pd.DataFrame.from_dict(binDict)
 with st.expander('Click to view bin boundaries', expanded = False):
     st.table(binDict)
 
-titleString = 'Number of Genes in ' + str(number) + ' Bins Spanning Chromosome ' + chrm)
+titleString = 'Number of Genes in ' + str(number) + ' Bins Spanning Chromosome ' + chrm
 st.header(titleString)
 
-st.markdown('''
-                Hover over the bars of the plot to see the number of genes.
-                Zoom in and out of the plot using the controls at the top right of the plot.
-            '''
-           )
+#st.markdown('''
+#                Hover over the bars of the plot to see the number of genes.
+#                Zoom in and out of the plot using the controls at the top right of the plot.
+#            '''
+#           )
 
 # Use the function 'createBinnedData' (see above) to count the number of 
 # markers in each of the bins (this number is input by the user)
