@@ -226,7 +226,7 @@ dfBins = pd.DataFrame.from_dict(binDict)
 with st.expander('Click to view bin boundaries', expanded = False):
     st.table(binDict)
 
-st.header(f'Number of Genes in {number} Bins Spanning Chromosome {chrm}')
+st.header('Number of Genes in ' + number + ' Bins Spanning Chromosome ' + chrm)
 
 st.markdown('''
                 Hover over the bars of the plot to see the number of genes.
