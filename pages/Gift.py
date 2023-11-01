@@ -128,6 +128,33 @@ def createBinnedData(genesUp, genesDown, binDict, number):
     return(dfResultsUp, dfResultsDown)
 
 ###############################################################################
+
+def getGeneName(df):
+    
+    geneNamesList = []
+    proteinNamesList = []
+    
+    attributes = df['attributes']
+
+    for i in attributes:
+        protein = ''
+        stringHolder = i.split(';')
+        geneName = stringHolder[0].split(':')
+        geneNamesList.append(geneName[1])
+        for k in stringHolder:
+            if 'description' in k:
+                protein = k.split('=')
+                protein = protein[1]
+                proteinNamesList.append(protein)
+        if protein == '':
+            proteinNamesList.append('No protein desription')
+            
+    df['gene'] = geneNamesList
+    df['protein'] = proteinNamesList
+
+    return(df)
+
+###############################################################################
 ###############################################################################
 ###############################################################################
 
@@ -191,8 +218,7 @@ with st.form('my_form', clear_on_submit=False):
 
         number = st.number_input("Number of bins (value between 10 and 100)", value=20,
                              min_value=10, max_value=100)
-
-   
+  
 
 binDict = createBins(number)
 dfBins = pd.DataFrame.from_dict(binDict)
@@ -243,58 +269,39 @@ with col1:
                  title = 'Number of Up and Down Regulated Genes',
                  labels = {'x': 'Bins', 'value': 'Number of Genes'},
                  color_discrete_sequence = ['green', 'red']
-#                 color_discrete_map = {'1': 'green', '-1': 'red'}
                 )
     fig.update_layout(yaxis_range=[-140, 30])
  
     st.plotly_chart(fig, use_container_width=True)
 
 
-
 st.header('Gene Positions on Chromosomes')
+
+genesUp = getGeneName(genesUp)
+genesDown = getGeneName(genesDown)
 
 genesUp['show'] = '1'
 genesDown['show'] = '-1'
 
 genesUpDown = pd.concat([genesUp, genesDown])
 
-chart1_data = genesUpDown[genesUpDown['seqid'] == chrm]
+genesUpDownChr = genesUpDown[genesUpDown['seqid'] == chrm]
 
-
-fig = px.scatter(x = chart1_data['start'],
-                 y = chart1_data['show'],
+fig = px.scatter(x = genesUpDownChr['start'],
+                 y = genesUpDownChr['show'],
                  title = "Up and Down Regulated Genes",
-                 labels = {'x': 'Genes', 'y':'Change'},
-                 color = chart1_data['show'],
-#                 color_discrete_sequence = ['green', 'red'],
+                 labels = {'x': 'Gene Position (bp)', 'y':'Change'},
+                 color = genesUpDownChr['show'],
                  color_discrete_map = {'1': 'green', '-1': 'red'},
-                 symbol = chart1_data['strand'],
-                 hover_data = [chart1_data['attributes']],
+                 symbol = genesUpDownChr['strand'],
+                 hover_data = [genesUpDownChr['gene'], genesUpDownChr['protein']],
                  height = 300)
-#fig.update_layout(showlegend = False)
 
 st.plotly_chart(fig, use_container_width=True)
 
-
-
-
-# dom = ['increase', 'sdecrease']
-# rng = ['green', 'red']
-# point_size = [20, 30]
-
-# c = alt.Chart(chart1_data).mark_point().encode(
-#         x='start',
-#         y='show',
-#         color=alt.Color('show', scale=alt.Scale(domain=dom, range=rng)),
-#         shape='strand',
-# #        size=alt.Size('strand'),
-#         tooltip=['attributes'])
-
-# st.altair_chart(c, use_container_width=True)
-
 with st.expander('Click to view data table', expanded = False):
 
-        st.write(chart1_data)
+        st.write(genesUpDownChr)
 
 ###############################################################################
 
