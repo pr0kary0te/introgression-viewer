@@ -226,7 +226,7 @@ dfBins = pd.DataFrame.from_dict(binDict)
 with st.expander('Click to view bin boundaries', expanded = False):
     st.table(binDict)
 
-st.header(f'Number of Genes in {number} Bins Spanning Selected Chromosome ({chrm})')
+st.header(f'Number of Genes in {number} Bins Spanning Chromosome {chrm}')
 
 st.markdown('''
                 Hover over the bars of the plot to see the number of genes.
@@ -271,7 +271,6 @@ with col1:
     values = [df['Up'], df['Down']]
     
     fig = px.bar(x=groups, y=(values),
-                 title = 'Number of Up and Down Regulated Genes',
                  labels = {'x': 'Bins', 'value': 'Number of Genes'},
                  color_discrete_sequence = ['green', 'red']
                 )
@@ -280,7 +279,7 @@ with col1:
     st.plotly_chart(fig, use_container_width=True)
 
 
-st.header('Gene Positions on Chromosomes')
+st.header(f'Positions of Genes Chromosome {chrm}')
 
 st.markdown('''
                 Hover over the sctter plot to see the names of the genes and, where available, the name of the protein for which they code.
@@ -300,7 +299,6 @@ genesUpDownChr = genesUpDown[genesUpDown['seqid'] == chrm]
 
 fig = px.scatter(x = genesUpDownChr['start'],
                  y = genesUpDownChr['show'],
-                 title = "Up and Down Regulated Genes",
                  labels = {'x': 'Gene Position (bp)', 'y':'Change'},
                  color = genesUpDownChr['show'],
                  color_discrete_map = {'1': 'green', '-1': 'red'},
