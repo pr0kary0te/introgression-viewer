@@ -280,7 +280,7 @@ with col1:
     st.plotly_chart(fig, use_container_width=True)
 
 
-st.header(f'Positions of Genes Chromosome {chrm}')
+st.header(f'Positions of Genes Along Chromosome {chrm}')
 
 st.markdown('''
                 Hover over the sctter plot to see the names of the genes and, where available, the name of the protein for which they code.
