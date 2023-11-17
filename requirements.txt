@@ -2,7 +2,9 @@ streamlit
 altair
 matplotlib
 numpy
+io
 pandas
 plotly
+plotly.express
 scipy
 seaborn
