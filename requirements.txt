@@ -1,9 +1,8 @@
 streamlit
-streamlit-aggrid==0.3.3
 altair
 matplotlib
 numpy
 io
 pandas
-scipy==1.9.3
+scipy
 seaborn
