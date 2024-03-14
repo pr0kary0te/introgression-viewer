@@ -507,27 +507,28 @@ with col1:
                   log_y = True,
                   title = figTitle
                  )
+    fig.update_layout(showlegend=False)
     st.plotly_chart(fig, use_container_width=True)
 
-    chart1_data = dfChr
-    a = alt.Chart(chart1_data, title=figTitle).mark_line(color='#1F77B4').encode(
-        x='Adjusted Bin',
-        y=alt.Y(
-            var1,
-            scale=alt.Scale(type="log")
-            ),
-        tooltip=['Adjusted Bin', var1])
+ #   chart1_data = dfChr
+ #   a = alt.Chart(chart1_data, title=figTitle).mark_line(color='#1F77B4').encode(
+ #       x='Adjusted Bin',
+ #       y=alt.Y(
+ #           var1,
+ #           scale=alt.Scale(type="log")
+ #           ),
+ #       tooltip=['Adjusted Bin', var1])
 
-    chart1_data = dfChr
-    b = alt.Chart(chart1_data).mark_line(opacity=0.5, color='#FF7F0E').encode(
-        x='Adjusted Bin',
-        y=alt.Y(
-            var2,
-            scale=alt.Scale(type="log")
-            ),
-        tooltip=['Adjusted Bin', var2])
+ #   chart1_data = dfChr
+ #   b = alt.Chart(chart1_data).mark_line(opacity=0.5, color='#FF7F0E').encode(
+ #       x='Adjusted Bin',
+ #       y=alt.Y(
+ #           var2,
+ #           scale=alt.Scale(type="log")
+ #           ),
+ #       tooltip=['Adjusted Bin', var2])
 
-    c = alt.layer(a, b)
+ #   c = alt.layer(a, b)
 
     st.altair_chart(c, use_container_width=True)
 
