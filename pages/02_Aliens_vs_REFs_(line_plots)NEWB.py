@@ -508,7 +508,7 @@ with col1:
                   title = figTitle
                  )
     fig.update_layout(showlegend=False)
-    fig.update_traces(opacity=0.6)
+    fig.update_traces(opacity=0.5)
     st.plotly_chart(fig, use_container_width=True)
 
  #   chart1_data = dfChr
