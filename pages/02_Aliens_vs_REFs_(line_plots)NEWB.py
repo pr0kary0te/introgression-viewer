@@ -507,6 +507,7 @@ with col1:
                   log_y = True,
                   title = figTitle
                  )
+    st.plotly_chart(fig, use_container_width=True)
 
     chart1_data = dfChr
     a = alt.Chart(chart1_data, title=figTitle).mark_line(color='#1F77B4').encode(
