@@ -530,7 +530,7 @@ with col1:
 
  #   c = alt.layer(a, b)
 
-    st.altair_chart(c, use_container_width=True)
+ #   st.altair_chart(c, use_container_width=True)
 
     with st.expander(f'Chromosome {chrm} diagram'):
 
