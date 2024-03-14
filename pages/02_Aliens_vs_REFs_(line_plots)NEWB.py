@@ -108,12 +108,12 @@ with st.sidebar:
 
         refFiles = {'Arina': ['https://www.cerealsdb.uk.net/ibspy/aliensArina.csv.gz', '_WhAri'],
                     'Chinese Spring': ['https://www.cerealsdb.uk.net/ibspy/aliensChineseSpring.csv.gz', ''],
-                    'Jagger': ['https://www.cerealsdb.uk.net/ibpsy/aliensJagger.csv.gz', '_WhJag'],
+                    'Jagger': ['https://www.cerealsdb.uk.net/ibspy/aliensJagger.csv.gz', '_WhJag'],
                     'Julius': ['https://www.cerealsdb.uk.net/ibspy/aliensJulius.csv.gz', '_Whjul'],
                     'Lancer': ['https://www.cerealsdb.uk.net/ibspy/aliensLancer.csv.gz', '_Whlan'],
                     'Landmark': ['https://www.cerealsdb.uk.net/ibspy/aliensLandmark.csv.gz', '_WhLan'],
                     'Mace': ['https://www.cerealsdb.uk.net/ibspy/aliensMace.csv.gz', '_Whmac'],
-                    'Norin61': ['https://www.cerealsdb.uk.net/ibspy/aliensNoring61.csv.gz', '_WhNor'],
+                    'Norin61': ['https://www.cerealsdb.uk.net/ibspy/aliensNorin61.csv.gz', '_WhNor'],
                     'Spelt': ['https://www.cerealsdb.uk.net/ibspy/aliensSpelta.csv.gz', '_Whspe'],
                     'Stanley': ['https://www.cerealsdb.uk.net/ibspy/aliensStanley.csv.gz', '_WhSta'],
                     'Mattis': ['https://www.cerealsdb.uk.net/ibspy/aliensMattis.csv.gz', '_WhSYM']
