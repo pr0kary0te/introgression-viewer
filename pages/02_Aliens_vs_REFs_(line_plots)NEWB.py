@@ -7,6 +7,7 @@ Created on Wed Dec  7 10:39:59 2022
 import streamlit as st
 import pandas as pd
 import plotly.figure_factory as ff
+import plotly.express as px
 import altair as alt
 
 st.set_page_config(layout="wide")
@@ -499,6 +500,13 @@ with col1:
     # st.write(dfChr.head(10))
     
     figTitle = alienGenome1 + ' vs ' + alienGenome2
+
+    fig = px.line(dfChr,
+                  x='Adjusted Bin',
+                  y=[var1, var2], color_discrete_map={var1: '#1F77B4', var2: '#FF7F0E'},
+                  log_y = True,
+                  title = figTitle
+                 )
 
     chart1_data = dfChr
     a = alt.Chart(chart1_data, title=figTitle).mark_line(color='#1F77B4').encode(
