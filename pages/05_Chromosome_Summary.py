@@ -59,12 +59,12 @@ with col1:
     # and set the index to the first column.
     
     df_summaryT = df_summary.set_index('Chromosome').T
-    df_summaryTMb = df_summaryT.loc[:,'chr1A':'chr7D'].apply(lambda x: x*50,000)
+    #df_summaryTMb = df_summaryT.loc[:,'chr1A':'chr7D'].apply(lambda x: x*50,000)
 
  
     if genome_or_group == 'A genome':
         df = df_summaryT.loc[:, 'chr1A':'chr7A']
-        dfMb = df.apply(lambda x: x*50)
+        dfMb = df.apply(lambda x: x*50,000)
         title = "Chromosome Length: A Genome"
         image = "A_Genome.png"
         box_colour = ["#357FC2"]
