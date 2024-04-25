@@ -64,7 +64,7 @@ with col1:
  
     if genome_or_group == 'A genome':
         df = df_summaryT.loc[:, 'chr1A':'chr7A']
-        dfMb = df.apply(lambda x: x*50,000)
+        dfMb = df.apply(lambda x: x*50)
         title = "Chromosome Length: A Genome"
         image = "A_Genome.png"
         box_colour = ["#357FC2"]
