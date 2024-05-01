@@ -68,48 +68,48 @@ with st.sidebar:
             key='chrm')  
     
 
-        # if int(chrm[0]) <= 4:
+          if int(chrm[0]) <= 4:
 
-        #     refFiles = {'Arina': ['https://www.cerealsdb.uk.net/ibspy_data/arina1_4.csv', '_WhAri'],
-        #                 'Chinese Spring': ['https://www.cerealsdb.uk.net/ibspy_data/chinese1_4.csv', ''],
-        #                 'Jagger': ['https://www.cerealsdb.uk.net/ibspy_data/jagger1_4.csv', '_WhJag'],
-        #                 'Julius': ['https://www.cerealsdb.uk.net/ibspy_data/julius1_4.csv', '_Whjul'],
-        #                 'Lancer': ['https://www.cerealsdb.uk.net/ibspy_data/lancer1_4.csv', '_Whlan'], 
-        #                 'Landmark': ['https://www.cerealsdb.uk.net/ibspy_data/landmark1_4.csv', '_WhLan'],
-        #                 'Mace': ['https://www.cerealsdb.uk.net/ibspy_data/mace1_4.csv.gz', '_Whmac'],
-        #                 'Norin61': ['https://www.cerealsdb.uk.net/ibspy_data/norin1_4.csv', '_WhNor'],
-        #                 'Spelt': ['https://www.cerealsdb.uk.net/ibspy_data/spelta1_4.csv', '_Whspe'],
-        #                 'Stanley': ['https://www.cerealsdb.uk.net/ibspy_data/stanley1_4.csv', '_WhSta'],
-        #                 'Mattis': ['https://www.cerealsdb.uk.net/ibspy_data/mattis1_4.csv', '_WhSYM']
-        #                 }
+            refFiles = {'Arina': ['https://www.cerealsdb.uk.net/ibspy_data/arina1_4.zip', '_WhAri'],
+                        'Chinese Spring': ['https://www.cerealsdb.uk.net/ibspy_data/chinese1_4.zip', ''],
+                        'Jagger': ['https://www.cerealsdb.uk.net/ibspy_data/jagger1_4.zip', '_WhJag'],
+                        'Julius': ['https://www.cerealsdb.uk.net/ibspy_data/julius1_4.zip', '_Whjul'],
+                        'Lancer': ['https://www.cerealsdb.uk.net/ibspy_data/lancer1_4.zip', '_Whlan'], 
+                        'Landmark': ['https://www.cerealsdb.uk.net/ibspy_data/landmark1_4.zip', '_WhLan'],
+                        'Mace': ['https://www.cerealsdb.uk.net/ibspy_data/mace1_4.zip', '_Whmac'],
+                        'Norin61': ['https://www.cerealsdb.uk.net/ibspy_data/norin1_4.zip', '_WhNor'],
+                        'Spelt': ['https://www.cerealsdb.uk.net/ibspy_data/spelta1_4.zip', '_Whspe'],
+                        'Stanley': ['https://www.cerealsdb.uk.net/ibspy_data/stanley1_4.zip', '_WhSta'],
+                        'Mattis': ['https://www.cerealsdb.uk.net/ibspy_data/mattis1_4.zip', '_WhSYM']
+                        }
     
-        # else:
+        else:
             
-        #     refFiles = {'Arina': ['https://www.cerealsdb.uk.net/ibspy_data/arina5_7.csv', '_WhAri'],
-        #                 'Chinese Spring': ['https://www.cerealsdb.uk.net/ibspy_data/chinese5_7.csv', ''],
-        #                 'Jagger': ['https://www.cerealsdb.uk.net/ibspy_data/jagger5_7.csv', '_WhJag'],
-        #                 'Julius': ['https://www.cerealsdb.uk.net/ibspy_data/julius5_7.csv', '_Whjul'],
-        #                 'Lancer': ['https://www.cerealsdb.uk.net/ibspy_data/lancer5_7.csv', '_Whlan'], 
-        #                 'Landmark': ['https://www.cerealsdb.uk.net/ibspy_data/landmark5_7.csv', '_WhLan'],
-        #                 'Mace': ['https://www.cerealsdb.uk.net/ibspy_data/mace5_7.csv.gz', '_Whmac'],
-        #                 'Norin61': ['https://www.cerealsdb.uk.net/ibspy_data/norin5_7.csv', '_WhNor'],
-        #                 'Spelt': ['https://www.cerealsdb.uk.net/ibspy_data/spelta5_7.csv', '_Whspe'],
-        #                 'Stanley': ['https://www.cerealsdb.uk.net/ibspy_data/stanley5_7.csv', '_WhSta'],
-        #                 'Mattis': ['https://www.cerealsdb.uk.net/ibspy_data/mattis5_7.csv', '_WhSYM']
-        #                 }
+            refFiles = {'Arina': ['https://www.cerealsdb.uk.net/ibspy_data/arina5_7.zip', '_WhAri'],
+                        'Chinese Spring': ['https://www.cerealsdb.uk.net/ibspy_data/chinese5_7.zip', ''],
+                        'Jagger': ['https://www.cerealsdb.uk.net/ibspy_data/jagger5_7.zip', '_WhJag'],
+                        'Julius': ['https://www.cerealsdb.uk.net/ibspy_data/julius5_7.zip', '_Whjul'],
+                        'Lancer': ['https://www.cerealsdb.uk.net/ibspy_data/lancer5_7.zip', '_Whlan'], 
+                        'Landmark': ['https://www.cerealsdb.uk.net/ibspy_data/landmark5_7.zip', '_WhLan'],
+                        'Mace': ['https://www.cerealsdb.uk.net/ibspy_data/mace5_7.zip', '_Whmac'],
+                        'Norin61': ['https://www.cerealsdb.uk.net/ibspy_data/norin5_7.zip', '_WhNor'],
+                        'Spelt': ['https://www.cerealsdb.uk.net/ibspy_data/spelta5_7.zip', '_Whspe'],
+                        'Stanley': ['https://www.cerealsdb.uk.net/ibspy_data/stanley5_7.zip', '_WhSta'],
+                        'Mattis': ['https://www.cerealsdb.uk.net/ibspy_data/mattis5_7.zip', '_WhSYM']
+                        }
     
-        refFiles = {'Arina': ['https://www.cerealsdb.uk.net/ibspy_data/arinaSortedElites.csv.gz', '_WhAri'],
-                       'Chinese Spring': ['https://www.cerealsdb.uk.net/ibspy_data/chineseSortedElites.csv.gz', ''],
-                       'Jagger': ['https://www.cerealsdb.uk.net/ibspy_data/jaggerSortedElites.csv.gz', '_WhJag'],
-                       'Julius': ['https://www.cerealsdb.uk.net/ibspy_data/juliusSortedElites.csv.gz', '_Whjul'],
-                       'Lancer': ['https://www.cerealsdb.uk.net/ibspy_data/lancerSortedElites.csv.gz', '_Whlan'], 
-                       'Landmark': ['https://www.cerealsdb.uk.net/ibspy_data/landmarkSortedElites.csv.gz', '_WhLan'],
-                       'Mace': ['https://www.cerealsdb.uk.net/ibspy_data/maceSortedElites.csv.gz', '_Whmac'],
-                       'Norin61': ['https://www.cerealsdb.uk.net/ibspy_data/norinSortedElites.csv.gz', '_WhNor'],
-                       'Spelt': ['https://www.cerealsdb.uk.net/ibspy_data/speltaSortedElites.csv.gz', '_Whspe'],
-                       'Stanley': ['https://www.cerealsdb.uk.net/ibspy_data/stanleySortedElites.csv.gz', '_WhSta'],
-                       'Mattis': ['https://www.cerealsdb.uk.net/ibspy_data/sy_mattisSortedElites.csv.gz', '_WhSYM']
-                       }
+        # refFiles = {'Arina': ['https://www.cerealsdb.uk.net/ibspy_data/arinaSortedElites.csv.gz', '_WhAri'],
+        #                'Chinese Spring': ['https://www.cerealsdb.uk.net/ibspy_data/chineseSortedElites.csv.gz', ''],
+        #                'Jagger': ['https://www.cerealsdb.uk.net/ibspy_data/jaggerSortedElites.csv.gz', '_WhJag'],
+        #                'Julius': ['https://www.cerealsdb.uk.net/ibspy_data/juliusSortedElites.csv.gz', '_Whjul'],
+        #                'Lancer': ['https://www.cerealsdb.uk.net/ibspy_data/lancerSortedElites.csv.gz', '_Whlan'], 
+        #                'Landmark': ['https://www.cerealsdb.uk.net/ibspy_data/landmarkSortedElites.csv.gz', '_WhLan'],
+        #                'Mace': ['https://www.cerealsdb.uk.net/ibspy_data/maceSortedElites.csv.gz', '_Whmac'],
+        #                'Norin61': ['https://www.cerealsdb.uk.net/ibspy_data/norinSortedElites.csv.gz', '_WhNor'],
+        #                'Spelt': ['https://www.cerealsdb.uk.net/ibspy_data/speltaSortedElites.csv.gz', '_Whspe'],
+        #                'Stanley': ['https://www.cerealsdb.uk.net/ibspy_data/stanleySortedElites.csv.gz', '_WhSta'],
+        #                'Mattis': ['https://www.cerealsdb.uk.net/ibspy_data/sy_mattisSortedElites.csv.gz', '_WhSYM']
+        #                }
         
         filePath = refFiles[refGenome][0]    
 
