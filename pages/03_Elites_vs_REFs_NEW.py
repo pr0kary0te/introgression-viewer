@@ -67,8 +67,7 @@ with st.sidebar:
             index=0,
             key='chrm')  
     
-
-          if int(chrm[0]) <= 4:
+        if int(chrm[0]) <= 4:
 
             refFiles = {'Arina': ['https://www.cerealsdb.uk.net/ibspy_data/arina1_4.zip', '_WhAri'],
                         'Chinese Spring': ['https://www.cerealsdb.uk.net/ibspy_data/chinese1_4.zip', ''],
