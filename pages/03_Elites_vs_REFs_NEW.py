@@ -108,7 +108,7 @@ with st.sidebar:
                        'Norin61': ['https://www.cerealsdb.uk.net/ibspy_data/norinSortedElites.csv.gz', '_WhNor'],
                        'Spelt': ['https://www.cerealsdb.uk.net/ibspy_data/speltaSortedElites.csv.gz', '_Whspe'],
                        'Stanley': ['https://www.cerealsdb.uk.net/ibspy_data/stanleySortedElites.csv.gz', '_WhSta'],
-                       'Mattis': ['https://www.cerealsdb.uk.net/ibspy_data/mattisSortedElites.csv.gz', '_WhSYM']
+                       'Mattis': ['https://www.cerealsdb.uk.net/ibspy_data/sy_mattisSortedElites.csv.gz', '_WhSYM']
                        }
         
         filePath = refFiles[refGenome][0]    
