@@ -97,19 +97,6 @@ with st.sidebar:
                         'Mattis': ['https://www.cerealsdb.uk.net/ibspy_data/mattis5_7.zip', '_WhSYM']
                         }
     
-        # refFiles = {'Arina': ['https://www.cerealsdb.uk.net/ibspy_data/arinaSortedElites.csv.gz', '_WhAri'],
-        #                'Chinese Spring': ['https://www.cerealsdb.uk.net/ibspy_data/chineseSortedElites.csv.gz', ''],
-        #                'Jagger': ['https://www.cerealsdb.uk.net/ibspy_data/jaggerSortedElites.csv.gz', '_WhJag'],
-        #                'Julius': ['https://www.cerealsdb.uk.net/ibspy_data/juliusSortedElites.csv.gz', '_Whjul'],
-        #                'Lancer': ['https://www.cerealsdb.uk.net/ibspy_data/lancerSortedElites.csv.gz', '_Whlan'], 
-        #                'Landmark': ['https://www.cerealsdb.uk.net/ibspy_data/landmarkSortedElites.csv.gz', '_WhLan'],
-        #                'Mace': ['https://www.cerealsdb.uk.net/ibspy_data/maceSortedElites.csv.gz', '_Whmac'],
-        #                'Norin61': ['https://www.cerealsdb.uk.net/ibspy_data/norinSortedElites.csv.gz', '_WhNor'],
-        #                'Spelt': ['https://www.cerealsdb.uk.net/ibspy_data/speltaSortedElites.csv.gz', '_Whspe'],
-        #                'Stanley': ['https://www.cerealsdb.uk.net/ibspy_data/stanleySortedElites.csv.gz', '_WhSta'],
-        #                'Mattis': ['https://www.cerealsdb.uk.net/ibspy_data/sy_mattisSortedElites.csv.gz', '_WhSYM']
-        #                }
-        
         filePath = refFiles[refGenome][0]    
 
         dfWhole = getData(filePath)
