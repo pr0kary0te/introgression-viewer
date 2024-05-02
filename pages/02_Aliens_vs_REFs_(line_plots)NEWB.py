@@ -256,14 +256,14 @@ with st.sidebar:
         alienGenome1 = st.selectbox(
             'Select first alien species ...',
             alienGenomeList,
-            index=91,
+            index=69,
             key='alien1'
         )
 
         alienGenome2 = st.selectbox(
             'Select second alien species ...',
             alienGenomeList,
-            index=96,
+            index=91,
             key='alien2'
         )
 
